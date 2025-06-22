@@ -30,13 +30,21 @@
         }
         .form-section {
             text-align: center;
+            max-width: 400px;
+            margin: auto;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
         }
         select, input[type="date"] {
             padding: 10px;
             border-radius: 10px;
             border: 1px solid #ccc;
-            margin-top: 10px;
             font-size: 16px;
+            width: 100%;
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -49,19 +57,19 @@
 
     <main>
         <section class="form-section">
-            <p>Esta página te ayudará a organizar tu viaje de la mejor manera. Primero, seleccioná la fecha y la ciudad a la que viajarás.</p>
+            <p>Esta página te ayudará a organizar tu viaje de la mejor manera.</p>
 
-            <label for="travelDate">Fecha de viaje:</label><br>
-            <input type="date" id="travelDate" name="travelDate" required /><br><br>
+            <label for="travelDate">Fecha de viaje:</label>
+            <input type="date" id="travelDate" name="travelDate" required />
 
-            <label for="citySelect">Ciudad de destino:</label><br>
+            <label for="citySelect">Ciudad de destino:</label>
             <select id="citySelect" name="citySelect" required>
                 <option value="">-- Seleccioná una ciudad --</option>
                 <option value="Barcelona">Barcelona</option>
                 <option value="Madrid">Madrid</option>
                 <option value="Sevilla">Sevilla</option>
                 <option value="Valencia">Valencia</option>
-            </select><br>
+            </select>
 
             <button id="nextBtn">Siguiente</button>
         </section>
