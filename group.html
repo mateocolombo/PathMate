@@ -1,85 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>PathMate - Tipo de grupo</title>
-    <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PathMate - Selección de Grupo</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header>
-        <h1>🌍 PathMate</h1>
-        <p>Seleccioná con quién vas a viajar</p>
-    </header>
+  <header>
+    <h1>🌍 PathMate</h1>
+    <p>Tu aliado para planear viajes inolvidables</p>
+  </header>
 
-    <main>
-        <section class="form-section">
-            <p>Fecha seleccionada: <span id="selectedDate"></span></p>
+  <main>
+    <section class="form-section">
+      <label for="groupType">¿Con quién viajás?</label>
+      <select id="groupType">
+        <option value="">Seleccioná una opción</option>
+        <option value="familia">Familia de 4 personas</option>
+        <option value="amigos">Grupo de amigos</option>
+        <option value="pareja">Pareja</option>
+      </select>
 
-            <label for="groupType">¿Con quién viajás?</label>
-            <select id="groupType">
-                <option value="">Seleccioná una opción</option>
-                <option value="familia">Familia de 4 personas</option>
-                <option value="amigos">Grupo de amigos</option>
-                <option value="pareja">Pareja</option>
-            </select>
+      <button id="nextBtn" class="btn">Siguiente</button>
+    </section>
+  </main>
 
-            <div id="planOutput" class="plan-output"></div>
-        </section>
-    </main>
+  <footer>
+    <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
+  </footer>
 
-    <footer>
-        <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
-    </footer>
+  <script>
+    const groupSelect = document.getElementById('groupType');
+    const nextBtn = document.getElementById('nextBtn');
 
-    <script>
-        // Mostrar la fecha guardada
-        const selectedDateSpan = document.getElementById('selectedDate');
-        const travelDay = sessionStorage.getItem('travelDay');
-        const travelMonth = sessionStorage.getItem('travelMonth');
-
-        if (travelDay && travelMonth) {
-            selectedDateSpan.textContent = `${travelDay} / ${travelMonth}`;
-        } else {
-            selectedDateSpan.textContent = "No se ha seleccionado fecha";
-        }
-
-        const groupSelect = document.getElementById('groupType');
-        const planOutput = document.getElementById('planOutput');
-
-        const plans = {
-            familia: `
-                <h3>Plan Familiar</h3>
-                <ul>
-                    <li>Alojamiento familiar con cocina</li>
-                    <li>Actividades para niños y adultos</li>
-                    <li>Transporte privado o alquiler de coche</li>
-                    <li>Mejores lugares para comer: Restaurante La Casa</li>
-                    <li>Lugares para visitar: Parque Central, Museo Histórico</li>
-                </ul>`,
-            amigos: `
-                <h3>Plan con Amigos</h3>
-                <ul>
-                    <li>Hostel o Airbnb compartido</li>
-                    <li>Rutas nocturnas y experiencias gastronómicas</li>
-                    <li>Eventos culturales y actividades en grupo</li>
-                    <li>Mejores lugares para comer: Pizzería El Buen Sabor</li>
-                    <li>Lugares para visitar: Barrio Viejo, Teatro Municipal</li>
-                </ul>`,
-            pareja: `
-                <h3>Plan Romántico</h3>
-                <ul>
-                    <li>Hotel con vistas o spa</li>
-                    <li>Cenas a la luz de las velas</li>
-                    <li>Paseos por lugares emblemáticos</li>
-                    <li>Mejores lugares para comer: Restaurante Romántico</li>
-                    <li>Lugares para visitar: Jardín Botánico, Paseo del Río</li>
-                </ul>`
-        };
-
-        groupSelect.addEventListener('change', function () {
-            planOutput.innerHTML = plans[this.value] || "";
-        });
-    </script>
+    nextBtn.addEventListener('click', () => {
+      const choice = groupSelect.value;
+      if (!choice) {
+        alert('Por favor seleccioná un tipo de grupo.');
+        return;
+      }
+      window.location.href = `orientation.html?group=${choice}`;
+    });
+  </script>
 </body>
 </html>
