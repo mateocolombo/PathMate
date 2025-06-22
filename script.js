@@ -1,15 +1,41 @@
-// Crear el mapa centrado en Valencia
-const map = L.map('map').setView([39.4699, -0.3763], 13); // Coordenadas de Valencia
+const groupSelect = document.getElementById('groupType');
+const planOutput = document.getElementById('planOutput');
 
-// Cargar el mapa base de OpenStreetMap
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map);
+groupSelect.addEventListener('change', function () {
+    const choice = this.value;
+    let message = "";
 
-// Evento de clic para seleccionar puntos de interés
-map.on('click', function(e) {
-    const { lat, lng } = e.latlng;
-    L.marker([lat, lng]).addTo(map)
-      .bindPopup(`Punto de interés:<br>Lat: ${lat.toFixed(4)}<br>Lng: ${lng.toFixed(4)}`)
-      .openPopup();
+    switch (choice) {
+        case "familia":
+            message = `
+                <h3>Plan Familiar</h3>
+                <ul>
+                    <li>Alojamiento familiar con cocina</li>
+                    <li>Actividades para niños y adultos</li>
+                    <li>Transporte privado o alquiler de coche</li>
+                </ul>`;
+            break;
+        case "amigos":
+            message = `
+                <h3>Plan con Amigos</h3>
+                <ul>
+                    <li>Hostel o Airbnb compartido</li>
+                    <li>Rutas nocturnas y experiencias gastronómicas</li>
+                    <li>Eventos culturales y actividades en grupo</li>
+                </ul>`;
+            break;
+        case "pareja":
+            message = `
+                <h3>Plan Romántico</h3>
+                <ul>
+                    <li>Hotel con vistas o spa</li>
+                    <li>Cenas a la luz de las velas</li>
+                    <li>Paseos por lugares emblemáticos</li>
+                </ul>`;
+            break;
+        default:
+            message = "";
+    }
+
+    planOutput.innerHTML = message;
 });
