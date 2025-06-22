@@ -1,63 +1,91 @@
-/* Body con imagen de fondo fija que cubre toda la pantalla */
-body {
+/* Valencia/styles.css - estilo específico para la página de grupo */
+
+html, body {
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: 100%;
   font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  color: #333;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Franjas naranjas superior e inferior */
+header, footer {
+  background-color: #f97316;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  flex-shrink: 0;
+}
+
+/* Footer estático para evitar scroll */
+footer {
+  position: static;
+  padding: 20px;
+  width: 100%;
+}
+
+/* Contenedor principal con imagen de fondo entre franjas naranjas */
+main {
+  flex-grow: 1;
+  max-width: 800px;
+  margin: 20px auto;
   background-image: url('../images/ciudad-artes-ciencias.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* fija la imagen al viewport */
-  color: #333;
-  overflow: hidden; /* evita scroll */
-  display: flex;
-  flex-direction: column;
-}
-
-/* Header fijo arriba */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(249, 115, 22, 0.95); /* color naranja con algo de transparencia */
-  color: white;
-  text-align: center;
-  padding: 10px 20px;
-  z-index: 10; /* encima de todo */
-}
-
-/* Footer fijo abajo */
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(249, 115, 22, 0.95);
-  color: white;
-  text-align: center;
-  padding: 10px 20px;
-  z-index: 10;
-}
-
-/* Main entre header y footer, scroll interno si hace falta */
-main {
-  margin-top: 50px; /* alto aproximado header */
-  margin-bottom: 50px; /* alto aproximado footer */
-  flex-grow: 1;
-  max-width: 800px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: rgba(255, 255, 255, 0.8); /* fondo blanco translúcido para legibilidad */
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   padding: 20px;
-  overflow-y: auto; /* scroll si el contenido es muy largo */
   color: #333;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: calc(100vh - 100px); /* viewport menos header y footer */
+  min-height: 0;
+}
+
+h2 {
+  color: #f97316;
+  margin-top: 0;
+}
+
+/* Bloque sin fondo ni margen para que quede sobre la imagen sin espacio blanco */
+.plan-output {
+  margin-top: 0;
+  padding: 15px;
+  border: 1px solid #f97316;
+  background-color: transparent; /* fondo transparente */
+  border-radius: 10px;
+}
+
+.btn {
+  padding: 10px 25px;
+  margin: 10px 5px;
+  background-color: #f97316;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #e86f0f;
+}
+
+.link-btn {
+  display: block;
+  margin-bottom: 10px;
 }
