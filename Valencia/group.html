@@ -4,13 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PathMate - Tipo de viaje</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
   <style>
     body {
-      font-family: sans-serif;
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding-bottom: 80px; /* para que no tape el footer contenido */
       background-color: #fff7f0;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
@@ -18,32 +22,37 @@
       color: white;
       padding: 15px 20px;
       text-align: center;
+      flex-shrink: 0;
     }
 
     header h1 {
       margin: 0;
       font-size: 28px;
+      font-weight: 700;
     }
 
     /* Contenedor para la pregunta */
     .question-container {
       max-width: 600px;
-      margin: 20px auto;
+      margin: 20px auto 10px; /* menos espacio abajo */
       background-color: white;
       border: 3px solid #f97316;
       border-radius: 15px;
       padding: 20px 25px;
       text-align: center;
-      font-size: 18px;
-      color: #333;
+      font-size: 24px;
+      font-weight: 600;
+      color: #f97316;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      flex-shrink: 0;
     }
 
     main {
+      flex-grow: 1;
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: calc(100vh - 300px); /* Ajustado para dejar espacio a header, pregunta y footer */
+      align-items: flex-start; /* alineamos al tope para que quede cerca de la pregunta */
+      padding-bottom: 30px;
     }
 
     .form-section {
@@ -59,6 +68,8 @@
     .form-section h2 {
       margin-bottom: 20px;
       font-size: 20px;
+      font-weight: 600;
+      color: #333;
     }
 
     .form-section button.option-btn {
@@ -72,6 +83,7 @@
       cursor: pointer;
       width: 100%;
       transition: background-color 0.3s ease;
+      font-weight: 600;
     }
 
     .form-section button.option-btn:hover {
@@ -93,6 +105,7 @@
       color: #555;
       font-size: 14px;
       z-index: 10;
+      flex-shrink: 0;
     }
 
     footer p {
@@ -109,10 +122,29 @@
       cursor: pointer;
       flex-shrink: 0;
       transition: background-color 0.3s ease;
+      font-weight: 600;
     }
 
     .back-btn:hover {
       background-color: #d65a00;
+    }
+
+    /* Responsive para pantallas pequeñas */
+    @media (max-width: 480px) {
+      .question-container {
+        font-size: 20px;
+        padding: 15px 20px;
+        max-width: 90%;
+      }
+
+      .form-section {
+        padding: 20px;
+      }
+
+      .form-section button.option-btn {
+        font-size: 14px;
+        padding: 10px 16px;
+      }
     }
   </style>
 </head>
