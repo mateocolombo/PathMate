@@ -1,35 +1,63 @@
-/* Franjas naranjas superior e inferior */
-header, footer {
-  background-color: #f97316;
-  color: white;
-  text-align: center;
-  padding: 10px 20px; /* padding vertical reducido (antes 20px) */
-  flex-shrink: 0;
-}
-
-/* Footer fijo: sigue estático */
-footer {
-  position: static;
-  padding: 10px 20px; /* igual padding reducido */
-  width: 100%;
-}
-
-/* Contenedor principal con imagen de fondo entre franjas naranjas */
-main {
-  flex-grow: 1;
-  max-width: 800px;
-  margin: 0 auto; /* quitar margen arriba y abajo para que ocupe todo */
+/* Body con imagen de fondo fija que cubre toda la pantalla */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
   background-image: url('../images/ciudad-artes-ciencias.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed; /* fija la imagen al viewport */
+  color: #333;
+  overflow: hidden; /* evita scroll */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header fijo arriba */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(249, 115, 22, 0.95); /* color naranja con algo de transparencia */
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+  z-index: 10; /* encima de todo */
+}
+
+/* Footer fijo abajo */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(249, 115, 22, 0.95);
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+  z-index: 10;
+}
+
+/* Main entre header y footer, scroll interno si hace falta */
+main {
+  margin-top: 50px; /* alto aproximado header */
+  margin-bottom: 50px; /* alto aproximado footer */
+  flex-grow: 1;
+  max-width: 800px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(255, 255, 255, 0.8); /* fondo blanco translúcido para legibilidad */
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  padding: 0; /* quitar padding para que la imagen toque los bordes */
+  padding: 20px;
+  overflow-y: auto; /* scroll si el contenido es muy largo */
   color: #333;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-height: 0;
-  width: 100%; /* que ocupe todo el ancho posible dentro del max-width */
+  height: calc(100vh - 100px); /* viewport menos header y footer */
 }
