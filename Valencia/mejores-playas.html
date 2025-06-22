@@ -54,46 +54,57 @@
       margin: 0;
     }
 
+    /* Tabla con dos columnas: imagen a la izquierda y texto a la derecha */
     table {
       width: 100%;
-      border-collapse: collapse;
-      background-color: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    thead {
-      background-color: #f97316;
-      color: white;
-    }
-
-    thead th {
-      padding: 12px 15px;
-      text-align: left;
-      font-weight: 600;
-      font-size: 16px;
+      border-collapse: separate; /* para usar border-spacing */
+      border-spacing: 0 15px; /* espacio vertical entre filas */
+      background-color: transparent; /* la tabla transparente para controlar celdas */
     }
 
     tbody tr {
-      border-bottom: 1px solid #ddd;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
     }
 
-    tbody tr:hover {
-      background-color: #fff1e0;
+    tbody tr:not(:last-child) {
+      margin-bottom: 15px;
     }
 
     tbody td {
-      padding: 12px 15px;
+      padding: 0 15px;
       vertical-align: middle;
     }
 
-    tbody td img {
-      width: 100px;
-      height: 70px;
+    /* Columna imagen */
+    tbody td:first-child {
+      flex: 0 0 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding-left: 0;
+      padding-right: 20px;
+    }
+
+    tbody td:first-child img {
+      width: 150px;
+      height: 100px;
       object-fit: cover;
       border-radius: 8px;
       border: 1px solid #ddd;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Otras columnas se distribuyen equitativamente */
+    tbody td:not(:first-child) {
+      flex: 1;
+      padding: 5px 10px;
+      font-size: 15px;
     }
 
     tbody td a {
@@ -106,20 +117,61 @@
       text-decoration: underline;
     }
 
+    /* Como los tr son flexbox, ocultamos los thead y hacemos un encabezado separado */
+    thead {
+      display: none;
+    }
+
+    /* Encabezado con flex para que quede igual */
+    .table-header {
+      display: flex;
+      padding: 10px 15px;
+      background-color: #f97316;
+      color: white;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 16px;
+      max-width: 100%;
+      margin-bottom: 10px;
+    }
+    .table-header div {
+      padding: 0 15px;
+    }
+    .table-header .col-img {
+      flex: 0 0 150px;
+      padding-left: 0;
+      padding-right: 20px;
+    }
+    .table-header .col-nombre {
+      flex: 1;
+    }
+    .table-header .col-ubicacion {
+      flex: 1;
+    }
+    .table-header .col-descripcion {
+      flex: 1;
+    }
+    .table-header .col-como-llegar {
+      flex: 1;
+    }
+
     footer {
-      background-color: #fff7f0;
+      background-color: #f0e6db; /* menos blanco para que no sea tan brillante */
       padding: 20px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-top: 30px;
       box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+      color: #555;
+      font-size: 14px;
     }
 
     footer p {
       margin: 0;
-      font-size: 14px;
-      color: #555;
+      white-space: nowrap; /* evitar que el texto se corte y haga wrap */
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .back-btn {
@@ -131,6 +183,7 @@
       font-size: 16px;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      flex-shrink: 0;
     }
 
     .back-btn:hover {
@@ -139,14 +192,14 @@
 
     /* Responsive para pantallas chicas */
     @media (max-width: 768px) {
-      tbody td img {
-        width: 70px;
-        height: 50px;
+      tbody td:first-child img {
+        width: 100px;
+        height: 70px;
       }
 
-      thead th, tbody td {
+      tbody td:not(:first-child) {
         font-size: 14px;
-        padding: 8px 10px;
+        padding: 5px 8px;
       }
 
       .back-btn {
@@ -158,14 +211,20 @@
         flex-direction: column;
         gap: 10px;
         padding: 15px 20px;
+        font-size: 13px;
       }
 
       footer p {
         text-align: center;
+        white-space: normal;
       }
 
       .back-btn {
         align-self: flex-start;
+      }
+
+      .table-header {
+        font-size: 14px;
       }
     }
   </style>
@@ -180,15 +239,16 @@
     <div class="section-title-container">
       <h1 class="section-title">Las mejores playas cerca de ti</h1>
     </div>
+
+    <!-- Encabezado de tabla como flexbox -->
+    <div class="table-header" role="row">
+      <div class="col-img">Nombre</div>
+      <div class="col-ubicacion">Ubicación</div>
+      <div class="col-descripcion">Descripción</div>
+      <div class="col-como-llegar">Cómo llegar</div>
+    </div>
+
     <table>
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Ubicación</th>
-          <th>Descripción</th>
-          <th>Cómo llegar</th>
-        </tr>
-      </thead>
       <tbody>
         <tr>
           <td>
