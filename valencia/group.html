@@ -36,11 +36,30 @@
 
     nextBtn.addEventListener('click', () => {
       const choice = groupSelect.value;
+
       if (!choice) {
         alert('Por favor seleccioná un tipo de grupo.');
         return;
       }
-      window.location.href = `orientation.html?group=${choice}`;
+
+      let destinationPage = '';
+
+      switch (choice) {
+        case 'pareja':
+          destinationPage = 'planes-pareja.html';
+          break;
+        case 'amigos':
+          destinationPage = 'planes-amigos.html';
+          break;
+        case 'familia':
+          destinationPage = 'planes-familia.html';
+          break;
+        default:
+          alert('Opción no válida');
+          return;
+      }
+
+      window.location.href = destinationPage;
     });
   </script>
 </body>
