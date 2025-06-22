@@ -57,7 +57,7 @@ h2 {
 .plan-output {
   margin-top: 0;
   padding: 15px;
-  border: 1px solid #f97316;
+  border: -2px solid #f97316;
   background-color: transparent; /* SIN fondo */
   border-radius: 10px;
 }
