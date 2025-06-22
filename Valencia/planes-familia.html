@@ -6,16 +6,44 @@
   <title>PathMate - Planes Familia</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
+    /* Reset box-sizing */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: sans-serif;
       margin: 0;
+      background-color: #fff7f0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #f97316;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      font-size: 16px;
     }
 
     main {
+      flex-grow: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: calc(100vh - 140px);
+      padding: 20px;
     }
 
     .form-section {
@@ -60,7 +88,8 @@
       box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
       color: #555;
       font-size: 14px;
-      position: relative;
+      flex-shrink: 0;
+      flex-wrap: wrap;
     }
 
     footer p {
@@ -86,6 +115,27 @@
 
     .back-btn:hover {
       background-color: #d65a00;
+    }
+
+    @media (max-width: 768px) {
+      footer {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 20px;
+        font-size: 13px;
+        align-items: flex-start;
+      }
+
+      footer p {
+        text-align: left;
+        white-space: normal;
+      }
+
+      .back-btn {
+        align-self: flex-start;
+        padding: 8px 20px;
+        font-size: 14px;
+      }
     }
   </style>
 </head>
