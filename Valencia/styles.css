@@ -21,51 +21,58 @@ header, footer {
   background-color: #f97316;
   color: white;
   text-align: center;
-  padding: 5px 10px;;  /* Reducido de 20px a 10px */
+  padding: 10px; /* uniforme */
   flex-shrink: 0;
   z-index: 10;
 }
 
-/* Footer estático para evitar scroll */
 footer {
   position: static;
   width: 100%;
 }
 
-/* Contenedor principal SIN fondo, solo contenido */
+footer p {
+  margin: 0;
+  white-space: normal;      /* ✅ permite el salto de línea */
+  overflow: visible;
+  text-overflow: unset;
+  text-align: center;
+}
+
+/* Contenedor principal */
 main {
   max-width: 800px;
   margin: 20px auto;
-  padding: 40px 20px 20px 20px; /* padding arriba extra para botón */
+  padding: 60px 20px 20px 20px; /* espacio extra arriba para botón */
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   flex-grow: 1;
-  position: relative; /* para posicionar botón absoluto */
+  position: relative;
   color: #333;
   display: flex;
   flex-direction: column;
-  background: transparent; /* sin fondo */
+  background: transparent;
 }
 
-/* Titulos */
+/* Títulos */
 h2 {
   color: #f97316;
   margin-top: 0;
 }
 
-/* .plan-output sin fondo, solo borde naranja */
+/* Contenedor de plan */
 .plan-output {
   margin-top: 0;
   padding: 15px;
   border: 2px solid #f97316;
-  background-color: transparent; /* SIN fondo */
+  background-color: transparent;
   border-radius: 10px;
 }
 
-/* Botón volver sobre la imagen, un poco más arriba */
+/* Botón Volver */
 .btn-volver {
   position: absolute;
-  bottom: 55px;
+  top: 15px; /* cambiado de bottom a top para evitar que tape el footer */
   left: 15px;
   background-color: #f97316;
   color: white;
@@ -105,7 +112,22 @@ h2 {
   background-color: #e86f0f;
 }
 
+/* Botones en columna */
 .link-btn {
   display: block;
   margin-bottom: 10px;
+}
+
+/* Responsive: para pantallas chicas */
+@media (max-width: 600px) {
+  .btn-volver {
+    position: static;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+  }
+
+  main {
+    padding-top: 20px; /* reducir espacio si el botón está en flujo normal */
+  }
 }
