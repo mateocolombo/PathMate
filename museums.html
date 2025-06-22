@@ -1,151 +1,120 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Museos en Valencia - PathMate</title>
-    <link rel="stylesheet" href="styles.css" />
-    <style>
-        /* Estilos específicos para la lista con imágenes */
-        .museums-list {
-            list-style: none;
-            padding: 0;
-        }
-        .museums-list li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .museums-list a {
-            text-decoration: none;
-            color: #f97316;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            transition: color 0.3s ease;
-        }
-        .museums-list a:hover {
-            color: #d65a00;
-        }
-        .museum-img {
-            width: 80px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-right: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease;
-        }
-        .museums-list a:hover .museum-img {
-            transform: scale(1.05);
-        }
-        /* Botón volver atrás visible */
-        #goBackBtn {
-            background-color: #f97316;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            padding: 10px 25px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-bottom: 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        #goBackBtn:hover {
-            background-color: #d65a00;
-        }
-        /* Botones modernos redondeados para navegación */
-        .nav-buttons {
-            margin-top: 30px;
-            display: flex;
-            justify-content: space-between;
-        }
-        button {
-            background-color: #f97316;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            padding: 10px 25px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #d65a00;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Museos en Valencia - PathMate</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Estilos específicos para la lista con imágenes */
+    .museums-list {
+      list-style: none;
+      padding: 0;
+    }
+    .museums-list li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .museums-list a {
+      text-decoration: none;
+      color: #f97316;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      transition: color 0.3s ease;
+    }
+    .museums-list a:hover {
+      color: #d65a00;
+    }
+    .museum-img {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+    .museums-list a:hover .museum-img {
+      transform: scale(1.05);
+    }
+    /* Botones con clase btn (como en orientación) */
+    .btn {
+      background-color: #f97316;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      margin-bottom: 20px;
+      text-align: center;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background-color: #d65a00;
+    }
+    /* Contenedor de navegación */
+    .navigation-buttons {
+      margin-top: 30px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>🌍 PathMate</h1>
-        <p>Museos imperdibles en Valencia para tu viaje</p>
-    </header>
+  <header>
+    <h1>🌍 PathMate</h1>
+    <p>Museos imperdibles en Valencia para tu viaje</p>
+  </header>
 
-    <main>
-        <!-- Botón Volver atrás bien visible arriba -->
-        <button id="goBackBtn">← Volver atrás</button>
+  <main>
+    <section>
+      <!-- Botón Volver -->
+      <button id="backBtn" class="btn">← Volver</button>
 
-        <section>
-            <h2>Los mejores museos para un viaje familiar</h2>
-            <ul id="museumsList" class="museums-list"></ul>
-        </section>
+      <h2>Los mejores museos para un viaje familiar</h2>
+      <ul id="museumsList" class="museums-list"></ul>
+    </section>
+  </main>
 
-        <div class="nav-buttons">
-            <button id="backBtn">← Volver</button>
-            <button id="nextBtn">Siguiente →</button>
-        </div>
-    </main>
+  <footer>
+    <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
+  </footer>
 
-    <footer>
-        <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
-    </footer>
+  <script>
+    const museumsData = [
+      { name: "Museo de Ciencias Príncipe Felipe", url: "https://www.cac.es", img: "images/museums/museo_ciencias_principe_felipe.jpg" },
+      { name: "Museo Fallero", url: "https://museofallero.com", img: "images/museums/museo_fallero.jpg" },
+      { name: "Museo de Bellas Artes de Valencia", url: "https://www.museobellasartesvalencia.gva.es", img: "images/museums/museo_bellas_artes.jpg" },
+      { name: "IVAM - Instituto Valenciano de Arte Moderno", url: "https://www.ivam.es", img: "images/museums/ivam.jpg" },
+      { name: "Museo Taurino de Valencia", url: "https://www.museotaurinovlc.com", img: "images/museums/museo_taurino.jpg" },
+      { name: "Museo de Historia de Valencia", url: "https://museodehistoriadevalencia.com", img: "images/museums/museo_historia.jpg" },
+      { name: "Museo del Arroz", url: "https://www.museodelarroz.com", img: "images/museums/museo_arroz.jpg" },
+      { name: "Museo de Etnología de Valencia", url: "https://www.museoetnologiavalencia.com", img: "images/museums/museo_etnologia.jpg" },
+      { name: "Museo del Grao", url: "https://www.museodelgrao.com", img: "images/museums/museo_grao.jpg" },
+      { name: "Museo Histórico Militar de Valencia", url: "https://www.museohistoricomilitarvalencia.com", img: "images/museums/museo_historico_militar.jpg" }
+    ];
 
-    <script>
-        const museumsData = [
-            { name: "Museo de Ciencias Príncipe Felipe", url: "https://www.cac.es", img: "images/museums/museo_ciencias_principe_felipe.jpg" },
-            { name: "Museo Fallero", url: "https://museofallero.com", img: "images/museums/museo_fallero.jpg" },
-            { name: "Museo de Bellas Artes de Valencia", url: "https://www.museobellasartesvalencia.gva.es", img: "images/museums/museo_bellas_artes.jpg" },
-            { name: "IVAM - Instituto Valenciano de Arte Moderno", url: "https://www.ivam.es", img: "images/museums/ivam.jpg" },
-            { name: "Museo Taurino de Valencia", url: "https://www.museotaurinovlc.com", img: "images/museums/museo_taurino.jpg" },
-            { name: "Museo de Historia de Valencia", url: "https://museodehistoriadevalencia.com", img: "images/museums/museo_historia.jpg" },
-            { name: "Museo del Arroz", url: "https://www.museodelarroz.com", img: "images/museums/museo_arroz.jpg" },
-            { name: "Museo de Etnología de Valencia", url: "https://www.museoetnologiavalencia.com", img: "images/museums/museo_etnologia.jpg" },
-            { name: "Museo del Grao", url: "https://www.museodelgrao.com", img: "images/museums/museo_grao.jpg" },
-            { name: "Museo Histórico Militar de Valencia", url: "https://www.museohistoricomilitarvalencia.com", img: "images/museums/museo_historico_militar.jpg" }
-        ];
+    const museumsList = document.getElementById('museumsList');
 
-        const museumsList = document.getElementById('museumsList');
+    function crearListaMuseos(lista) {
+      return lista.map(museo => `
+        <li>
+          <a href="${museo.url}" target="_blank" rel="noopener noreferrer">
+            <img src="${museo.img}" alt="${museo.name}" class="museum-img" />
+            <span>${museo.name}</span>
+          </a>
+        </li>
+      `).join('');
+    }
 
-        function crearListaMuseos(lista) {
-            return lista.map(museo => `
-                <li>
-                    <a href="${museo.url}" target="_blank" rel="noopener noreferrer">
-                        <img src="${museo.img}" alt="${museo.name}" class="museum-img" />
-                        <span>${museo.name}</span>
-                    </a>
-                </li>
-            `).join('');
-        }
+    museumsList.innerHTML = crearListaMuseos(museumsData);
 
-        museumsList.innerHTML = crearListaMuseos(museumsData);
-
-        // Botón Volver atrás con historial del navegador
-        document.getElementById('goBackBtn').addEventListener('click', () => {
-            window.history.back();
-        });
-
-        // Botón Volver a página fija
-        document.getElementById('backBtn').addEventListener('click', () => {
-            window.location.href = 'group-select.html';
-        });
-
-        // Botón siguiente
-        document.getElementById('nextBtn').addEventListener('click', () => {
-            window.location.href = 'gastronomy.html';
-        });
-    </script>
+    document.getElementById('backBtn').addEventListener('click', () => {
+      window.history.back();
+    });
+  </script>
 </body>
 </html>
