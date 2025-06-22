@@ -65,7 +65,7 @@ h2 {
 /* Botón volver sobre la imagen, un poco más arriba */
 .btn-volver {
   position: absolute;
-  top: 40px;
+  top: 50px;
   left: 15px;
   background-color: #f97316;
   color: white;
