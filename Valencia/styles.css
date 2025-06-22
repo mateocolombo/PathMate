@@ -20,17 +20,18 @@ header, footer {
 /* Contenedor principal con imagen de fondo entre franjas naranjas */
 main {
   padding: 20px;
-  max-width: 800px;
-  margin: auto;
+  width: 100vw; /* ancho total de la ventana */
+  height: calc(100vh - 140px); /* altura total menos header y footer */
   position: relative;
   z-index: 1;
   background-image: url('../images/ciudad-artes-ciencias.jpg'); /* Ruta a la imagen */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  min-height: calc(100vh - 140px); /* para que ocupe todo entre header y footer */
+  /* border-radius: 15px; */ /* eliminado para que la imagen no se recorte */
+  /* box-shadow: 0 4px 10px rgba(0,0,0,0.1); */ /* eliminado para mantener la imagen limpia */
+  box-shadow: none;
+  margin: 0;
 }
 
 h2 {
