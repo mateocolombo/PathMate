@@ -20,7 +20,6 @@
         button:hover {
             background-color: #d65a00;
         }
-        /* Imagen mapa centrada */
         .map-image {
             display: block;
             margin: 10px auto 20px auto;
@@ -28,6 +27,16 @@
             width: 100%;
             border-radius: 10px;
             box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        }
+        .form-section {
+            text-align: center;
+        }
+        select, input[type="date"] {
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -40,10 +49,19 @@
 
     <main>
         <section class="form-section">
-            <p>Esta página te ayudará a organizar tu viaje de la mejor manera. Primero, seleccioná la fecha en la que viajarás.</p>
+            <p>Esta página te ayudará a organizar tu viaje de la mejor manera. Primero, seleccioná la fecha y la ciudad a la que viajarás.</p>
 
-            <label for="travelDate">Fecha de viaje:</label>
-            <input type="date" id="travelDate" name="travelDate" required />
+            <label for="travelDate">Fecha de viaje:</label><br>
+            <input type="date" id="travelDate" name="travelDate" required /><br><br>
+
+            <label for="citySelect">Ciudad de destino:</label><br>
+            <select id="citySelect" name="citySelect" required>
+                <option value="">-- Seleccioná una ciudad --</option>
+                <option value="Barcelona">Barcelona</option>
+                <option value="Madrid">Madrid</option>
+                <option value="Sevilla">Sevilla</option>
+                <option value="Valencia">Valencia</option>
+            </select><br>
 
             <button id="nextBtn">Siguiente</button>
         </section>
@@ -58,17 +76,25 @@
 
         nextBtn.addEventListener('click', () => {
             const travelDate = document.getElementById('travelDate').value;
+            const city = document.getElementById('citySelect').value;
 
             if (!travelDate) {
                 alert('Por favor, seleccioná una fecha para tu viaje.');
                 return;
             }
 
-            // Guardamos la fecha completa en sessionStorage
-            sessionStorage.setItem('travelDate', travelDate);
+            if (!city) {
+                alert('Por favor, seleccioná una ciudad de destino.');
+                return;
+            }
 
-            // Redirigimos a la página del grupo
-            window.location.href = 'group.html';
+            // Guardamos en sessionStorage
+            sessionStorage.setItem('travelDate', travelDate);
+            sessionStorage.setItem('city', city);
+
+            // Redirigir a la carpeta correspondiente
+            const url = `${city}/group.html`;
+            window.location.href = url;
         });
     </script>
 </body>
