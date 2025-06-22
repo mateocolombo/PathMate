@@ -7,31 +7,33 @@ body {
   color: #333;
 }
 
-/* Franjas naranjas superior e inferior */
-header, footer {
+header {
   background-color: #f97316;
   color: white;
   text-align: center;
   padding: 20px;
-  position: relative;
-  z-index: 2;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
 }
 
-/* Contenedor principal con imagen de fondo entre franjas naranjas */
 main {
   padding: 20px;
-  width: 100vw; /* ancho total de la ventana */
-  height: calc(100vh - 140px); /* altura total menos header y footer */
+  max-width: 800px;
+  margin: 80px auto 60px auto; /* dejar espacio para header y footer fijos */
   position: relative;
   z-index: 1;
-  background-image: url('../images/ciudad-artes-ciencias.jpg'); /* Ruta a la imagen */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  /* border-radius: 15px; */ /* eliminado para que la imagen no se recorte */
-  /* box-shadow: 0 4px 10px rgba(0,0,0,0.1); */ /* eliminado para mantener la imagen limpia */
-  box-shadow: none;
-  margin: 0;
+
+  background-image: url('../images/ciudad-artes-ciencias.jpg');
+  background-size: cover;          /* La imagen cubre todo el área */
+  background-position: center;     /* Centrada */
+  background-repeat: no-repeat;    /* No se repite */
+
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+  min-height: calc(100vh - 140px); /* Ocupa todo el espacio entre header y footer */
 }
 
 h2 {
@@ -43,15 +45,19 @@ h2 {
   margin-top: 20px;
   padding: 15px;
   border: 1px solid #f97316;
-  background-color: rgba(255, 247, 240, 0.85); /* Fondo semitransparente para legibilidad */
+  background-color: #fff7f0;
   border-radius: 10px;
 }
 
 footer {
+  background-color: #f97316;
+  color: white;
+  text-align: center;
+  padding: 10px;
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding: 10px;
+  z-index: 10;
 }
 
 .btn {
