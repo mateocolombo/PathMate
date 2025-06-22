@@ -1,3 +1,5 @@
+/* --- Tu CSS actual --- */
+
 /* Valencia/styles.css - estilo específico para la página de grupo */
 
 html, body {
@@ -129,5 +131,18 @@ h2 {
 
   main {
     padding-top: 20px; /* reducir espacio si el botón está en flujo normal */
+  }
+}
+
+/* --- NUEVO: Scroll horizontal para tablas en móvil --- */
+
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* scroll suave en iOS */
+}
+
+@media (max-width: 600px) {
+  .table-responsive table {
+    min-width: 600px; /* ancho mínimo para activar scroll */
   }
 }
