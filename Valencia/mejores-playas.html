@@ -63,6 +63,7 @@
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       max-width: 100%;
+      display: block; /* agregado para correcto comportamiento */
     }
 
     /* Contenedor para la tabla sin scroll individual */
@@ -145,6 +146,8 @@
       font-size: 16px;
       max-width: 100%;
       margin-bottom: 10px;
+      min-width: 700px; /* mismo ancho mínimo que la tabla */
+      box-sizing: border-box; /* para que padding no sume al ancho */
     }
     .table-header div {
       padding: 0 15px;
