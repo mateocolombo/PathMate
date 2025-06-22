@@ -1,91 +1,111 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PathMate - Tipo de viaje</title>
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 0;
-    }
+/* Valencia/styles.css - estilo específico para la página de grupo */
 
-    main {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: calc(100vh - 140px);
-    }
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url('../images/ciudad-artes-ciencias.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #333;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-    .form-section {
-      text-align: center;
-      background-color: #fff7f0;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      width: 90%;
-      max-width: 400px;
-    }
+/* Franjas naranjas superior e inferior */
+header, footer {
+  background-color: #f97316;
+  color: white;
+  text-align: center;
+  padding: 10px;  /* Reducido de 20px a 10px */
+  flex-shrink: 0;
+  z-index: 10;
+}
 
-    .form-section h2 {
-      margin-bottom: 20px;
-      font-size: 20px;
-    }
+/* Footer estático para evitar scroll */
+footer {
+  position: static;
+  width: 100%;
+}
 
-    .form-section button.option-btn {
-      background-color: #f97316;
-      color: white;
-      border: none;
-      border-radius: 25px;
-      padding: 12px 20px;
-      margin: 10px 0;
-      font-size: 16px;
-      cursor: pointer;
-      width: 100%;
-      transition: background-color 0.3s ease;
-    }
+/* Contenedor principal SIN fondo, solo contenido */
+main {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 40px 20px 20px 20px; /* padding arriba extra para botón */
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  flex-grow: 1;
+  position: relative; /* para posicionar botón absoluto */
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  background: transparent; /* sin fondo */
+}
 
-    .form-section button.option-btn:hover {
-      background-color: #d65a00;
-    }
+/* Titulos */
+h2 {
+  color: #f97316;
+  margin-top: 0;
+}
 
-    .back-btn {
-      position: absolute;
-      bottom: 100px; /* subido de 60px a 100px */
-      left: 20px;
-      background-color: #f97316;
-      color: white;
-      border: none;
-      border-radius: 25px;
-      padding: 10px 20px;
-      font-size: 15px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+/* .plan-output sin fondo, solo borde naranja */
+.plan-output {
+  margin-top: 0;
+  padding: 15px;
+  border: 1px solid #f97316;
+  background-color: transparent; /* SIN fondo */
+  border-radius: 10px;
+}
 
-    .back-btn:hover {
-      background-color: #d65a00;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>🌍 PathMate</h1>
-    <p>¿Qué tipo de viaje vas a hacer en Valencia?</p>
-  </header>
+/* Botón volver sobre la imagen, un poco más arriba */
+.btn-volver {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  background-color: #f97316;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  z-index: 20;
+}
 
-  <main>
-    <section class="form-section">
-      <h2>Elegí una opción</h2>
-      <button class="option-btn" onclick="redirigir('familia')">Viaje de familia</button>
-      <button class="option-btn" onclick="redirigir('amigos')">Viaje de amigos</button>
-      <button class="option-btn" onclick="redirigir('pareja')">Viaje de pareja</button>
-    </section>
-  </main>
+.btn-volver:hover {
+  background-color: #e86f0f;
+}
 
-  <footer>
-    <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
-  </footer>
+/* Otros botones */
+.btn {
+  padding: 10px 25px;
+  margin: 10px 5px;
+  background-color: #f97316;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
 
-  <button clas
+.btn:hover {
+  background-color: #e86f0f;
+}
+
+.link-btn {
+  display: block;
+  margin-bottom: 10px;
+}
