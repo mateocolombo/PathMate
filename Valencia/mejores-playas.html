@@ -16,7 +16,7 @@
       background-repeat: no-repeat;
     
       color: #333;
-}
+    }
 
     header {
       background-color: #f97316;
@@ -58,10 +58,16 @@
       margin: 0;
     }
 
-    /* Contenedor para scroll horizontal */
-    .table-container {
+    /* NUEVO CONTENEDOR CON SCROLL HORIZONTAL */
+    .scroll-wrapper {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
+      max-width: 100%;
+    }
+
+    /* Contenedor para la tabla sin scroll individual */
+    .table-container {
+      overflow-x: visible; /* quitamos scroll aquí */
     }
 
     table {
@@ -248,54 +254,57 @@
       <h1 class="section-title">Las mejores playas cerca de ti</h1>
     </div>
 
-    <div class="table-header" role="row">
-      <div class="col-img">Nombre</div>
-      <div class="col-ubicacion">Ubicación</div>
-      <div class="col-descripcion">Descripción</div>
-      <div class="col-como-llegar">Cómo llegar</div>
-    </div>
+    <!-- Aquí el nuevo contenedor para scroll horizontal -->
+    <div class="scroll-wrapper" role="region" aria-label="Tabla con playas y detalles">
+      <div class="table-header" role="row">
+        <div class="col-img">Nombre</div>
+        <div class="col-ubicacion">Ubicación</div>
+        <div class="col-descripcion">Descripción</div>
+        <div class="col-como-llegar">Cómo llegar</div>
+      </div>
 
-    <div class="table-container">
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <img src="images/playa-alboraya.jpg" alt="Playa Alboraya" />
-              <div>Playa Alboraya</div>
-            </td>
-            <td>Alboraya, Valencia</td>
-            <td>Un espacio tranquilo con aguas claras ideal para familias.</td>
-            <td><a href="https://www.google.com/maps/place/Platja+de+la+Patacona/@39.5000329,-0.3316659,14.33z" target="_blank" rel="noopener noreferrer">Ver mapa</a></td>
-          </tr>
-          <tr>
-            <td>
-              <img src="images/playa-malvarrosa.jpg" alt="Playa Malvarrosa" />
-              <div>Playa Malvarrosa</div>
-            </td>
-            <td>Valencia</td>
-            <td>La playa urbana más famosa de Valencia con amplio paseo marítimo.</td>
-            <td><a href="https://www.google.com/maps/place/Playa+de+la+Malvarrosa/@39.4769479,-0.3334281,15z" target="_blank" rel="noopener noreferrer">Ver mapa</a></td>
-          </tr>
-          <tr>
-            <td>
-              <img src="images/playa-pinedo.jpg" alt="Playa Pinedo" />
-              <div>Playa Pinedo</div>
-            </td>
-            <td>Pinedo, Valencia</td>
-            <td>Perfecta para quienes buscan menos aglomeración y naturaleza.</td>
-            <td><a href="https://www.google.com/maps/place/Playa+de+Pinedo/@39.421134,-0.3381289,16z" target="_blank" rel="noopener noreferrer">Ver mapa</a></td>
-          </tr>
-          <tr>
-            <td>
-              <img src="images/playa-meliana.jpg" alt="Playa de la Meliana" />
-              <div>Playa de Meliana</div>
-            </td>
-            <td>Meliana, Valencia</td>
-            <td>Un paraíso poco conocido, ideal para relajarse y desconectar.</td>
-            <td><a href="https://www.google.com/maps/place/Playa+de+Meliana/@39.5219607,-0.3210826,15.48z" target="_blank" rel="noopener noreferrer">Ver mapa</a></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-container">
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <img src="images/playa-alboraya.jpg" alt="Playa Alboraya" />
+                <div>Playa Alboraya</div>
+              </td>
+              <td>Alboraya, Valencia</td>
+              <td>Un espacio tranquilo con aguas claras ideal para familias.</td>
+              <td><a href="https://www.google.com/maps/place/Platja+de+la+Patacona/@39.5000329,-0.3316659,14.33z" target="_blank" rel="noopener noreferrer">Ver mapa</a></td>
+            </tr>
+            <tr>
+              <td>
+                <img src="images/playa-malvarrosa.jpg" alt="Playa Malvarrosa" />
+                <div>Playa Malvarrosa</div>
+              </td>
+              <td>Valencia</td>
+              <td>La playa urbana más famosa de Valencia con amplio paseo marítimo.</td>
+              <td><a href="https://www.google.com/maps/place/Playa+de+la+Malvarrosa/@39.4769479,-0.3334281,15z" target="_blank" rel="noopener noreferrer">Ver mapa</a></td>
+            </tr>
+            <tr>
+              <td>
+                <img src="images/playa-pinedo.jpg" alt="Playa Pinedo" />
+                <div>Playa Pinedo</div>
+              </td>
+              <td>Pinedo, Valencia</td>
+              <td>Perfecta para quienes buscan menos aglomeración y naturaleza.</td>
+              <td><a href="https://www.google.com/maps/place/Playa+de+Pinedo/@39.421134,-0.3381289,16z" target="_blank" rel="noopener noreferrer">Ver mapa</a></td>
+            </tr>
+            <tr>
+              <td>
+                <img src="images/playa-meliana.jpg" alt="Playa de la Meliana" />
+                <div>Playa de Meliana</div>
+              </td>
+              <td>Meliana, Valencia</td>
+              <td>Un paraíso poco conocido, ideal para relajarse y desconectar.</td>
+              <td><a href="https://www.google.com/maps/place/Playa+de+Meliana/@39.5219607,-0.3210826,15.48z" target="_blank" rel="noopener noreferrer">Ver mapa</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </main>
 
