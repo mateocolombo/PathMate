@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PathMate - Tu compañero de viaje</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PathMate - Planifica tu viaje</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
     <header>
@@ -14,15 +14,29 @@
 
     <main>
         <section class="form-section">
-            <label for="groupType">¿Con quién viajás?</label>
-            <select id="groupType">
-                <option value="">Seleccioná una opción</option>
-                <option value="familia">Familia de 4 personas</option>
-                <option value="amigos">Grupo de amigos</option>
-                <option value="pareja">Pareja</option>
+            <p>Esta página te ayudará a organizar tu viaje de la mejor manera. Primero, seleccioná la fecha en la que viajarás.</p>
+
+            <label for="travelDay">Día:</label>
+            <input type="number" id="travelDay" name="travelDay" min="1" max="31" required />
+
+            <label for="travelMonth">Mes:</label>
+            <select id="travelMonth" name="travelMonth" required>
+                <option value="">Seleccioná un mes</option>
+                <option value="1">Enero</option>
+                <option value="2">Febrero</option>
+                <option value="3">Marzo</option>
+                <option value="4">Abril</option>
+                <option value="5">Mayo</option>
+                <option value="6">Junio</option>
+                <option value="7">Julio</option>
+                <option value="8">Agosto</option>
+                <option value="9">Septiembre</option>
+                <option value="10">Octubre</option>
+                <option value="11">Noviembre</option>
+                <option value="12">Diciembre</option>
             </select>
 
-            <div id="planOutput" class="plan-output"></div>
+            <button id="nextBtn">Siguiente</button>
         </section>
     </main>
 
@@ -30,6 +44,25 @@
         <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        const nextBtn = document.getElementById('nextBtn');
+
+        nextBtn.addEventListener('click', () => {
+            const day = document.getElementById('travelDay').value;
+            const month = document.getElementById('travelMonth').value;
+
+            if (!day || !month) {
+                alert('Por favor, completá el día y el mes.');
+                return;
+            }
+
+            // Guardamos la fecha en sessionStorage para usar en la siguiente página
+            sessionStorage.setItem('travelDay', day);
+            sessionStorage.setItem('travelMonth', month);
+
+            // Redirigimos a la página del grupo
+            window.location.href = 'group.html';
+        });
+    </script>
 </body>
 </html>
