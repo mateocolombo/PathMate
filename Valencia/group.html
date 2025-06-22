@@ -9,6 +9,7 @@
     body {
       font-family: sans-serif;
       margin: 0;
+      padding-bottom: 80px; /* para que no tape el footer contenido */
     }
 
     main {
@@ -51,9 +52,24 @@
     }
 
     footer {
-      text-align: center;
-      padding: 20px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
       background-color: #fff7f0;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 30px;
+      box-sizing: border-box;
+      color: #555;
+      font-size: 14px;
+      z-index: 10;
+    }
+
+    footer p {
+      margin: 0;
     }
 
     .back-btn {
@@ -64,7 +80,8 @@
       padding: 10px 20px;
       font-size: 15px;
       cursor: pointer;
-      margin-top: 10px;
+      flex-shrink: 0;
+      transition: background-color 0.3s ease;
     }
 
     .back-btn:hover {
@@ -88,8 +105,8 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
     <button class="back-btn" onclick="history.back()">Volver</button>
+    <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
   </footer>
 
   <script>
