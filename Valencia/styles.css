@@ -1,7 +1,13 @@
 /* Valencia/styles.css - estilo específico para la página de grupo */
 
-body {
+html, body {
+  height: 100%;
   margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* evitar scroll horizontal */
+}
+
+body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #fff;
   color: #333;
@@ -21,7 +27,7 @@ header, footer {
 main {
   padding: 20px;
   width: 100vw; /* ancho total de la ventana */
-  height: calc(100vh - 140px); /* altura total menos header y footer */
+  min-height: calc(100vh - 140px); /* altura mínima, no fija */
   position: relative;
   z-index: 1;
   background-image: url('../images/ciudad-artes-ciencias.jpg'); /* Ruta a la imagen */
