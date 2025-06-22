@@ -4,11 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PathMate - Planes para amigos</title>
-  <link rel="stylesheet" href="styles.css" />
   <style>
     body {
       font-family: sans-serif;
       margin: 0;
+      background-color: #fff7f0;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: #f97316;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
     }
 
     main {
@@ -20,7 +29,7 @@
 
     .form-section {
       text-align: center;
-      background-color: #fff7f0;
+      background-color: white;
       padding: 30px;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -30,7 +39,8 @@
 
     .form-section h2 {
       margin-bottom: 20px;
-      font-size: 20px;
+      font-size: 22px;
+      color: #f97316;
     }
 
     .form-section button.option-btn {
@@ -69,24 +79,17 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>🌍 PathMate</h1>
-    <p>Opciones ideales para un viaje con amigos</p>
-  </header>
+  <header>🌍 PathMate - Planes para amigos</header>
 
   <main>
     <section class="form-section">
       <h2>Elegí una opción</h2>
-      <button class="option-btn">Mejores playas</button>
-      <button class="option-btn">Sitios nocturnos</button>
-      <button class="option-btn">Centros comerciales</button>
-      <button class="option-btn">Mejores rooftops</button>
+      <button class="option-btn" onclick="window.location.href='mejores-playas.html'">Mejores playas</button>
+      <button class="option-btn" onclick="window.location.href='sitios-nocturnos.html'">Sitios nocturnos</button>
+      <button class="option-btn" onclick="window.location.href='centros-comerciales.html'">Centros comerciales</button>
+      <button class="option-btn" onclick="window.location.href='mejores-rooftops.html'">Mejores rooftops</button>
     </section>
   </main>
-
-  <footer>
-    <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
-  </footer>
 
   <button class="back-btn" onclick="history.back()">Volver</button>
 </body>
