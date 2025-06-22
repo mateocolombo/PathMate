@@ -1,109 +1,172 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>PathMate - Planifica tu viaje</title>
-    <link rel="stylesheet" href="styles.css" />
-    <style>
-        button {
-            background-color: #f97316;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            padding: 10px 25px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: 20px;
-        }
-        button:hover {
-            background-color: #d65a00;
-        }
-        .map-image {
-            display: block;
-            margin: 10px auto 20px auto;
-            max-width: 200px;
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-        }
-        .form-section {
-            text-align: center;
-            max-width: 400px;
-            margin: auto;
-        }
-        label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            display: block;
-        }
-        select, input[type="date"] {
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-            width: 100%;
-            margin-bottom: 15px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PathMate - Planifica tu viaje</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: #f3f3f3;
+    }
+
+    .map-image {
+      display: block;
+      margin: 10px auto 20px auto;
+      max-width: 200px;
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    }
+
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      padding-bottom: 100px; /* espacio para el footer */
+    }
+
+    .form-section, .about-section {
+      flex: 1 1 300px;
+      max-width: 400px;
+      margin: 10px;
+    }
+
+    .form-section {
+      text-align: center;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    select, input[type="date"] {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: #f97316;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #d65a00;
+    }
+
+    footer {
+      background-color: #f97316;
+      color: white;
+      text-align: center;
+      padding: 15px 10px;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      font-size: 14px;
+    }
+
+    .about-section {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      footer {
+        position: static;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>🌍 PathMate</h1>
-        <img class="map-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/World_map_blank_without_borders.svg/320px-World_map_blank_without_borders.svg.png" alt="Mapa mundial" />
-        <p>Tu aliado para planear viajes inolvidables</p>
-    </header>
+  <header>
+    <h1>🌍 PathMate</h1>
+    <img class="map-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/World_map_blank_without_borders.svg/320px-World_map_blank_without_borders.svg.png" alt="Mapa mundial" />
+    <p>Tu aliado para planear viajes inolvidables</p>
+  </header>
 
-    <main>
-        <section class="form-section">
-            <p>Esta página te ayudará a organizar tu viaje de la mejor manera.</p>
+  <main>
+    <section class="about-section">
+      <h2>Sobre nosotros</h2>
+      <p>En PathMate, te ayudamos a planear tu aventura perfecta. Desde la elección del destino hasta la organización del grupo, te guiamos paso a paso para que vivas una experiencia inolvidable sin estrés.</p>
+    </section>
 
-            <label for="travelDate">Fecha de viaje:</label>
-            <input type="date" id="travelDate" name="travelDate" required />
+    <section class="form-section">
+      <p>Esta página te ayudará a organizar tu viaje de la mejor manera.</p>
 
-            <label for="citySelect">Ciudad de destino:</label>
-            <select id="citySelect" name="citySelect" required>
-                <option value="">-- Seleccioná una ciudad --</option>
-                <option value="Barcelona">Barcelona</option>
-                <option value="Madrid">Madrid</option>
-                <option value="Sevilla">Sevilla</option>
-                <option value="Valencia">Valencia</option>
-            </select>
+      <label for="travelDate">Fecha de viaje:</label>
+      <input type="date" id="travelDate" name="travelDate" required />
 
-            <button id="nextBtn">Siguiente</button>
-        </section>
-    </main>
+      <label for="citySelect">Ciudad de destino:</label>
+      <select id="citySelect" name="citySelect" required>
+        <option value="">-- Seleccioná una ciudad --</option>
+        <option value="Barcelona">Barcelona</option>
+        <option value="Madrid">Madrid</option>
+        <option value="Sevilla">Sevilla</option>
+        <option value="Valencia">Valencia</option>
+      </select>
 
-    <footer>
-        <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
-    </footer>
+      <button id="nextBtn">Siguiente</button>
+    </section>
+  </main>
 
-    <script>
-        const nextBtn = document.getElementById('nextBtn');
+  <footer>
+    <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
+  </footer>
 
-        nextBtn.addEventListener('click', () => {
-            const travelDate = document.getElementById('travelDate').value;
-            const city = document.getElementById('citySelect').value;
+  <script>
+    const nextBtn = document.getElementById('nextBtn');
 
-            if (!travelDate) {
-                alert('Por favor, seleccioná una fecha para tu viaje.');
-                return;
-            }
+    nextBtn.addEventListener('click', () => {
+      const travelDate = document.getElementById('travelDate').value;
+      const city = document.getElementById('citySelect').value;
 
-            if (!city) {
-                alert('Por favor, seleccioná una ciudad de destino.');
-                return;
-            }
+      if (!travelDate) {
+        alert('Por favor, seleccioná una fecha para tu viaje.');
+        return;
+      }
 
-            // Guardamos en sessionStorage
-            sessionStorage.setItem('travelDate', travelDate);
-            sessionStorage.setItem('city', city);
+      if (!city) {
+        alert('Por favor, seleccioná una ciudad de destino.');
+        return;
+      }
 
-            // Redirigir a la carpeta correspondiente
-            const url = `${city}/group.html`;
-            window.location.href = url;
-        });
-    </script>
+      // Guardamos en sessionStorage
+      sessionStorage.setItem('travelDate', travelDate);
+      sessionStorage.setItem('city', city);
+
+      // Redirigir a la carpeta correspondiente
+      const url = `${city}/group.html`;
+      window.location.href = url;
+    });
+  </script>
 </body>
 </html>
