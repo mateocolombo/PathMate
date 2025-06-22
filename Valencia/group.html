@@ -4,15 +4,139 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PathMate - Tipo de viaje</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="Valencia/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #fff7f0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #f97316;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .question-box {
+      text-align: center;
+      background-color: #ffe5cc;
+      margin: 0 auto;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      padding: 15px 25px;
+      border-radius: 12px;
+      width: fit-content;
+      font-size: 20px;
+      font-weight: 600;
+      color: #d65a00;
+    }
+
+    main {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .form-section {
+      text-align: center;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .form-section h2 {
+      margin-bottom: 20px;
+      font-size: 20px;
+      color: #333;
+    }
+
+    .form-section button.option-btn {
+      background-color: #f97316;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 20px;
+      margin: 10px 0;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-section button.option-btn:hover {
+      background-color: #d65a00;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #fff7f0;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .back-btn {
+      background-color: #f97316;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #d65a00;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    @media (max-width: 600px) {
+      .question-box {
+        font-size: 18px;
+        padding: 10px 15px;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>🌍 PathMate</h1>
   </header>
 
-  <div class="question-container">
+  <div class="question-box">
     ¿Qué tipo de viaje vas a hacer en Valencia?
   </div>
 
@@ -26,7 +150,7 @@
   </main>
 
   <footer>
-    <button class="back-btn" onclick="history.back()">Volver</button>
+    <button class="back-btn" onclick="history.back()">← Volver</button>
     <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
   </footer>
 
