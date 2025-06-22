@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mejores Playas - PathMate</title>
-  <link rel="stylesheet" href="styles.css" />
   <style>
     body {
       font-family: sans-serif;
@@ -53,24 +52,18 @@
       margin: 0;
     }
 
-    /* --- Nueva clase para scroll horizontal --- */
-    .table-responsive {
+    /* Contenedor para scroll horizontal */
+    .table-container {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
-
-    @media (max-width: 600px) {
-      .table-responsive table {
-        min-width: 600px;
-      }
-    }
-    /* --- fin nueva clase --- */
 
     table {
       width: 100%;
       border-collapse: separate;
       border-spacing: 0 15px;
       background-color: transparent;
+      min-width: 700px; /* ancho mínimo para activar scroll en pantallas pequeñas */
     }
 
     tbody tr {
@@ -256,8 +249,7 @@
       <div class="col-como-llegar">Cómo llegar</div>
     </div>
 
-    <!-- Contenedor para scroll horizontal -->
-    <div class="table-responsive">
+    <div class="table-container">
       <table>
         <tbody>
           <tr>
@@ -299,7 +291,6 @@
         </tbody>
       </table>
     </div>
-
   </main>
 
   <footer>
