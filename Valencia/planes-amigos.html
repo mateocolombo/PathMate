@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PathMate - Planes para amigos</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 140px);
+    }
+
+    .form-section {
+      text-align: center;
+      background-color: #fff7f0;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .form-section h2 {
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    .form-section button.option-btn {
+      background-color: #f97316;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 20px;
+      margin: 10px 0;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-section button.option-btn:hover {
+      background-color: #d65a00;
+    }
+
+    .back-btn {
+      position: fixed;
+      bottom: 60px;
+      left: 20px;
+      background-color: #f97316;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .back-btn:hover {
+      background-color: #d65a00;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌍 PathMate</h1>
+    <p>Opciones ideales para un viaje con amigos</p>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <h2>Elegí una opción</h2>
+      <button class="option-btn">Mejores playas</button>
+      <button class="option-btn">Sitios nocturnos</button>
+      <button class="option-btn">Centros comerciales</button>
+      <button class="option-btn">Mejores rooftops</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
+  </footer>
+
+  <button class="back-btn" onclick="history.back()">Volver</button>
+</body>
+</html>
