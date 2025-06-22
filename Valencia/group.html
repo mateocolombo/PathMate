@@ -15,7 +15,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: calc(100vh - 140px);
+      height: calc(100vh - 180px); /* Ajustado para dejar espacio al footer */
     }
 
     .form-section {
@@ -50,10 +50,13 @@
       background-color: #d65a00;
     }
 
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #fff7f0;
+    }
+
     .back-btn {
-      position: absolute;
-      bottom: 60px;
-      left: 20px;
       background-color: #f97316;
       color: white;
       border: none;
@@ -61,6 +64,7 @@
       padding: 10px 20px;
       font-size: 15px;
       cursor: pointer;
+      margin-top: 10px;
     }
 
     .back-btn:hover {
@@ -85,9 +89,8 @@
 
   <footer>
     <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
+    <button class="back-btn" onclick="history.back()">Volver</button>
   </footer>
-
-  <button class="back-btn" onclick="history.back()">Volver</button>
 
   <script>
     function redirigir(tipo) {
