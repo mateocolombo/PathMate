@@ -3,25 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PathMate - Explora Valencia</title>
+    <title>PathMate - Tu compañero de viaje</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 </head>
 <body>
     <header>
         <h1>🌍 PathMate</h1>
-        <p>Tu compañero para descubrir el mundo, comenzando por Valencia.</p>
+        <p>Tu aliado para planear viajes inolvidables</p>
     </header>
 
     <main>
-        <div id="map"></div>
+        <section class="form-section">
+            <label for="groupType">¿Con quién viajás?</label>
+            <select id="groupType">
+                <option value="">Seleccioná una opción</option>
+                <option value="familia">Familia de 4 personas</option>
+                <option value="amigos">Grupo de amigos</option>
+                <option value="pareja">Pareja</option>
+            </select>
+
+            <div id="planOutput" class="plan-output"></div>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 PathMate · Descubre y viaja con propósito</p>
+        <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
     </footer>
 
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
