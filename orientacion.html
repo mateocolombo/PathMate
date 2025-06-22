@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Orientación del Viaje - PathMate</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>PathMate</h1>
+    <p>Elegí la orientación de tu viaje</p>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <h2>¿Qué querés disfrutar más en tu viaje?</h2>
+
+      <div id="linksContainer">
+        <!-- Links generados por JS -->
+      </div>
+
+      <div class="navigation-buttons">
+        <button id="backBtn" class="btn">← Volver</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const group = params.get('group');
+    const linksContainer = document.getElementById('linksContainer');
+
+    if (!group) {
+      linksContainer.innerHTML = `<p>Error: No se seleccionó un grupo. <a href="group.html">Volver a la selección</a></p>`;
+    } else {
+      const opciones = [
+        { name: 'Vida Nocturna', page: 'nightlife.html' },
+        { name: 'Museos', page: 'museums.html' },
+        { name: 'Gastronomía', page: 'gastronomy.html' },
+      ];
+
+      linksContainer.innerHTML = opciones
+        .map(
+          (opt) =>
+            `<a href="${opt.page}?group=${group}" class="btn link-btn">${opt.name}</a>`
+        )
+        .join('');
+    }
+
+    document.getElementById('backBtn').addEventListener('click', () => {
+      window.history.back();
+    });
+  </script>
+</body>
+</html>
