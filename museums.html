@@ -39,7 +39,25 @@
         .museums-list a:hover .museum-img {
             transform: scale(1.05);
         }
-        /* Botones modernos redondeados */
+        /* Botón volver atrás visible */
+        #goBackBtn {
+            background-color: #f97316;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        #goBackBtn:hover {
+            background-color: #d65a00;
+        }
+        /* Botones modernos redondeados para navegación */
         .nav-buttons {
             margin-top: 30px;
             display: flex;
@@ -67,13 +85,15 @@
     </header>
 
     <main>
+        <!-- Botón Volver atrás bien visible arriba -->
+        <button id="goBackBtn">← Volver atrás</button>
+
         <section>
             <h2>Los mejores museos para un viaje familiar</h2>
             <ul id="museumsList" class="museums-list"></ul>
         </section>
 
         <div class="nav-buttons">
-            <button id="goBackBtn">← Volver atrás</button>
             <button id="backBtn">← Volver</button>
             <button id="nextBtn">Siguiente →</button>
         </div>
@@ -84,63 +104,21 @@
     </footer>
 
     <script>
-        // Datos de museos con imágenes locales y URLs
         const museumsData = [
-            {
-                name: "Museo de Ciencias Príncipe Felipe",
-                url: "https://www.cac.es",
-                img: "images/museums/museo_ciencias_principe_felipe.jpg"
-            },
-            {
-                name: "Museo Fallero",
-                url: "https://museofallero.com",
-                img: "images/museums/museo_fallero.jpg"
-            },
-            {
-                name: "Museo de Bellas Artes de Valencia",
-                url: "https://www.museobellasartesvalencia.gva.es",
-                img: "images/museums/museo_bellas_artes.jpg"
-            },
-            {
-                name: "IVAM - Instituto Valenciano de Arte Moderno",
-                url: "https://www.ivam.es",
-                img: "images/museums/ivam.jpg"
-            },
-            {
-                name: "Museo Taurino de Valencia",
-                url: "https://www.museotaurinovlc.com",
-                img: "images/museums/museo_taurino.jpg"
-            },
-            {
-                name: "Museo de Historia de Valencia",
-                url: "https://museodehistoriadevalencia.com",
-                img: "images/museums/museo_historia.jpg"
-            },
-            {
-                name: "Museo del Arroz",
-                url: "https://www.museodelarroz.com",
-                img: "images/museums/museo_arroz.jpg"
-            },
-            {
-                name: "Museo de Etnología de Valencia",
-                url: "https://www.museoetnologiavalencia.com",
-                img: "images/museums/museo_etnologia.jpg"
-            },
-            {
-                name: "Museo del Grao",
-                url: "https://www.museodelgrao.com",
-                img: "images/museums/museo_grao.jpg"
-            },
-            {
-                name: "Museo Histórico Militar de Valencia",
-                url: "https://www.museohistoricomilitarvalencia.com",
-                img: "images/museums/museo_historico_militar.jpg"
-            }
+            { name: "Museo de Ciencias Príncipe Felipe", url: "https://www.cac.es", img: "images/museums/museo_ciencias_principe_felipe.jpg" },
+            { name: "Museo Fallero", url: "https://museofallero.com", img: "images/museums/museo_fallero.jpg" },
+            { name: "Museo de Bellas Artes de Valencia", url: "https://www.museobellasartesvalencia.gva.es", img: "images/museums/museo_bellas_artes.jpg" },
+            { name: "IVAM - Instituto Valenciano de Arte Moderno", url: "https://www.ivam.es", img: "images/museums/ivam.jpg" },
+            { name: "Museo Taurino de Valencia", url: "https://www.museotaurinovlc.com", img: "images/museums/museo_taurino.jpg" },
+            { name: "Museo de Historia de Valencia", url: "https://museodehistoriadevalencia.com", img: "images/museums/museo_historia.jpg" },
+            { name: "Museo del Arroz", url: "https://www.museodelarroz.com", img: "images/museums/museo_arroz.jpg" },
+            { name: "Museo de Etnología de Valencia", url: "https://www.museoetnologiavalencia.com", img: "images/museums/museo_etnologia.jpg" },
+            { name: "Museo del Grao", url: "https://www.museodelgrao.com", img: "images/museums/museo_grao.jpg" },
+            { name: "Museo Histórico Militar de Valencia", url: "https://www.museohistoricomilitarvalencia.com", img: "images/museums/museo_historico_militar.jpg" }
         ];
 
         const museumsList = document.getElementById('museumsList');
 
-        // Crear lista con imágenes
         function crearListaMuseos(lista) {
             return lista.map(museo => `
                 <li>
@@ -154,19 +132,19 @@
 
         museumsList.innerHTML = crearListaMuseos(museumsData);
 
-        // Botón volver atrás (historial del navegador)
+        // Botón Volver atrás con historial del navegador
         document.getElementById('goBackBtn').addEventListener('click', () => {
             window.history.back();
         });
 
-        // Botón volver (a página anterior fija)
+        // Botón Volver a página fija
         document.getElementById('backBtn').addEventListener('click', () => {
-            window.location.href = 'group-select.html'; // Cambiar si corresponde
+            window.location.href = 'group-select.html';
         });
 
         // Botón siguiente
         document.getElementById('nextBtn').addEventListener('click', () => {
-            window.location.href = 'gastronomy.html'; // Cambiar si corresponde
+            window.location.href = 'gastronomy.html';
         });
     </script>
 </body>
