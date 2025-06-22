@@ -51,17 +51,37 @@
       background-color: #d65a00;
     }
 
+    footer {
+      background-color: #f0e6db;
+      padding: 20px 30px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+      color: #555;
+      font-size: 14px;
+      position: relative;
+    }
+
+    footer p {
+      margin: 0;
+      white-space: normal;
+      overflow: visible;
+      text-overflow: unset;
+      flex-grow: 1;
+      text-align: left;
+    }
+
     .back-btn {
-      position: absolute;
-      bottom: 60px;
-      left: 20px;
       background-color: #f97316;
       color: white;
       border: none;
       border-radius: 25px;
-      padding: 10px 20px;
-      font-size: 15px;
+      padding: 10px 25px;
+      font-size: 16px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
+      flex-shrink: 0;
     }
 
     .back-btn:hover {
@@ -86,9 +106,8 @@
   </main>
 
   <footer>
+    <button class="back-btn" onclick="history.back()">← Volver</button>
     <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
   </footer>
-
-  <button class="back-btn" onclick="history.back()">Volver</button>
 </body>
 </html>
