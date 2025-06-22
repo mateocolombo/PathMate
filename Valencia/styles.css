@@ -1,91 +1,35 @@
-/* Valencia/styles.css - estilo específico para la página de grupo */
-
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%; /* Importante para usar 100vh */
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #fff;
-  color: #333;
-  overflow-x: hidden; /* Evita scroll horizontal */
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
 /* Franjas naranjas superior e inferior */
 header, footer {
   background-color: #f97316;
   color: white;
   text-align: center;
-  padding: 20px;
-  flex-shrink: 0; /* Para que no se reduzcan */
+  padding: 10px 20px; /* padding vertical reducido (antes 20px) */
+  flex-shrink: 0;
 }
 
-/* Footer fijo: mejor que sea estático para evitar complicaciones */
+/* Footer fijo: sigue estático */
 footer {
-  position: static; /* Cambiado para evitar problemas */
-  padding: 20px;
+  position: static;
+  padding: 10px 20px; /* igual padding reducido */
   width: 100%;
 }
 
 /* Contenedor principal con imagen de fondo entre franjas naranjas */
 main {
-  flex-grow: 1; /* Ocupa todo el espacio disponible */
+  flex-grow: 1;
   max-width: 800px;
-  margin: 20px auto; /* margen superior/inferior para separación */
+  margin: 0 auto; /* quitar margen arriba y abajo para que ocupe todo */
   background-image: url('../images/ciudad-artes-ciencias.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  padding: 20px;
+  padding: 0; /* quitar padding para que la imagen toque los bordes */
   color: #333;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-height: 0; /* para evitar que flex-grow genere overflow */
-}
-
-/* Titulos y otros estilos */
-h2 {
-  color: #f97316;
-  margin-top: 0;
-}
-
-.plan-output {
-  margin-top: 20px;
-  padding: 15px;
-  border: 1px solid #f97316;
-  background-color: rgba(255, 247, 240, 0.85);
-  border-radius: 10px;
-}
-
-.btn {
-  padding: 10px 25px;
-  margin: 10px 5px;
-  background-color: #f97316;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 16px;
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #e86f0f;
-}
-
-.link-btn {
-  display: block;
-  margin-bottom: 10px;
+  min-height: 0;
+  width: 100%; /* que ocupe todo el ancho posible dentro del max-width */
 }
