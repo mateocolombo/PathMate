@@ -32,12 +32,11 @@ footer {
   width: 100%;
 }
 
-/* Contenedor principal con fondo semi-transparente para legibilidad */
+/* Contenedor principal SIN fondo, solo contenido */
 main {
   max-width: 800px;
   margin: 20px auto;
   padding: 40px 20px 20px 20px; /* padding arriba extra para botón */
-  background-color: rgba(255, 255, 255, 0.85); /* fondo claro y translúcido */
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   flex-grow: 1;
@@ -45,6 +44,7 @@ main {
   color: #333;
   display: flex;
   flex-direction: column;
+  background: transparent; /* sin fondo */
 }
 
 /* Titulos */
@@ -58,14 +58,14 @@ h2 {
   margin-top: 0;
   padding: 15px;
   border: 1px solid #f97316;
-  background-color: transparent; /* SIN fondo blanco */
+  background-color: transparent; /* SIN fondo */
   border-radius: 10px;
 }
 
-/* Botón volver sobre la imagen, un poco más arriba (posición absoluta dentro de main) */
+/* Botón volver sobre la imagen, un poco más arriba */
 .btn-volver {
   position: absolute;
-  top: 10px; /* a 10px del borde superior del main */
+  top: 10px;
   left: 20px;
   background-color: #f97316;
   color: white;
@@ -77,7 +77,7 @@ h2 {
   cursor: pointer;
   text-decoration: none;
   transition: background-color 0.3s ease;
-  z-index: 20; /* por encima de todo */
+  z-index: 20;
 }
 
 .btn-volver:hover {
