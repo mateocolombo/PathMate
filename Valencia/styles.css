@@ -5,6 +5,7 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #fff;
   color: #333;
+  /* overflow: hidden;  Opcional: activa solo si no quieres ningún scroll en la página */
 }
 
 /* Franjas naranjas superior e inferior */
@@ -30,7 +31,8 @@ main {
   background-repeat: no-repeat;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  min-height: calc(100vh - 140px); /* para que ocupe todo entre header y footer */
+  height: calc(100vh - 80px); /* altura exacta para evitar scroll */
+  overflow: hidden; /* evita scroll interno en main */
 }
 
 h2 {
