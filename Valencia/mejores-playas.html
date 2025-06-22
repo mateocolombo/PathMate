@@ -6,102 +6,142 @@
   <title>Mejores Playas - PathMate</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Adaptación del estilo para la lista, siguiendo el estilo general */
-    main {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: calc(100vh - 140px);
-      padding: 20px;
-    }
-
-    .form-section {
+    body {
+      font-family: sans-serif;
+      margin: 0;
       background-color: #fff7f0;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 90%;
-      max-width: 600px;
-      overflow-y: auto;
-      max-height: calc(100vh - 180px);
+      color: #333;
     }
 
-    .form-section h1 {
-      margin-bottom: 20px;
-      font-size: 24px;
-      color: #f97316;
+    header {
+      background-color: #f97316;
+      color: white;
+      padding: 15px 20px;
       text-align: center;
     }
 
-    ul.playa-list {
-      list-style: none;
-      padding: 0;
+    header h1 {
       margin: 0;
+      font-size: 28px;
     }
 
-    ul.playa-list li {
+    header p {
+      margin: 5px 0 0;
+      font-size: 16px;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1.section-title {
+      color: #f97316;
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 28px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
       background-color: white;
-      margin-bottom: 20px;
-      padding: 15px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    ul.playa-list img {
-      width: 80px;
-      height: 60px;
+    thead {
+      background-color: #f97316;
+      color: white;
+    }
+
+    thead th {
+      padding: 12px 15px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #ddd;
+    }
+
+    tbody tr:hover {
+      background-color: #fff1e0;
+    }
+
+    tbody td {
+      padding: 12px 15px;
+      vertical-align: middle;
+    }
+
+    tbody td img {
+      width: 100px;
+      height: 70px;
       object-fit: cover;
       border-radius: 8px;
-      margin-right: 15px;
-      flex-shrink: 0;
       border: 1px solid #ddd;
     }
 
-    .info {
-      flex-grow: 1;
+    tbody td a {
+      color: #0a66c2;
+      font-weight: 500;
+      text-decoration: none;
     }
 
-    .info strong {
-      display: block;
-      font-size: 18px;
-      margin-bottom: 5px;
-      color: #f97316;
+    tbody td a:hover {
+      text-decoration: underline;
     }
 
-    .info p {
-      margin: 0 0 5px 0;
+    footer {
+      background-color: #fff7f0;
+      padding: 20px;
+      text-align: center;
+      margin-top: 30px;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+    }
+
+    footer p {
+      margin: 0 0 10px;
       font-size: 14px;
       color: #555;
     }
 
-    .info a {
-      color: #0a66c2;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .info a:hover {
-      text-decoration: underline;
-    }
-
     .back-btn {
-      position: absolute;
-      bottom: 60px;
-      left: 20px;
       background-color: #f97316;
       color: white;
       border: none;
       border-radius: 25px;
-      padding: 10px 20px;
-      font-size: 15px;
+      padding: 10px 25px;
+      font-size: 16px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
     .back-btn:hover {
       background-color: #d65a00;
     }
+
+    /* Responsive para pantallas chicas */
+    @media (max-width: 768px) {
+      tbody td img {
+        width: 70px;
+        height: 50px;
+      }
+
+      thead th, tbody td {
+        font-size: 14px;
+        padding: 8px 10px;
+      }
+
+      .back-btn {
+        padding: 8px 20px;
+        font-size: 14px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -111,49 +151,60 @@
   </header>
 
   <main>
-    <section class="form-section">
-      <h1>Las mejores playas cerca de ti</h1>
-      <ul class="playa-list">
-        <li>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Playa_Malvarrosa_Valencia.jpg/320px-Playa_Malvarrosa_Valencia.jpg" alt="Playa Alboraya" />
-          <div class="info">
-            <strong>Playa Alboraya</strong>
-            <p>Un espacio tranquilo con aguas claras ideal para familias.</p>
-            <a href="https://www.google.com/maps/place/Platja+de+la+Patacona/@39.5000329,-0.3316659,14.33z/data=!4m6!3m5!1s0xd6047d93a025c57:0xfb6c8e801c77407f!8m2!3d39.4895038!4d-0.3242144!16s%2Fg%2F11c319ndy4?entry=ttu&g_ep=EgoyMDI1MDYxNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
-          </div>
-        </li>
-        <li>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Playa_Malvarrosa%2C_Valencia_2013_01.jpg/320px-Playa_Malvarrosa%2C_Valencia_2013_01.jpg" alt="Playa Malvarrosa" />
-          <div class="info">
-            <strong>Playa Malvarrosa</strong>
-            <p>La playa urbana más famosa de Valencia con amplio paseo marítimo.</p>
-            <a href="https://www.google.com/maps/place/Playa+de+la+Malvarrosa/@39.4769479,-0.3334281,15z/data=!3m1!4b1!4m6!3m5!1s0xd604873c969b2ad:0x603becf922d66bf4!8m2!3d39.47726!4d-0.3233746!16s%2Fg%2F120p4q76?entry=ttu&g_ep=EgoyMDI1MDYxNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
-          </div>
-        </li>
-        <li>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Platja_de_Pinedo_Valencia_2013_01.jpg/320px-Platja_de_Pinedo_Valencia_2013_01.jpg" alt="Playa Pinedo" />
-          <div class="info">
-            <strong>Playa Pinedo</strong>
-            <p>Perfecta para quienes buscan menos aglomeración y naturaleza.</p>
-            <a href="https://www.google.com/maps/place/Playa+de+Pinedo/@39.421134,-0.3381289,16z/data=!3m1!4b1!4m6!3m5!1s0xd60499ed7c0df63:0xcd99085a86d1810a!8m2!3d39.4218939!4d-0.3330735!16s%2Fg%2F121v775z?entry=ttu&g_ep=EgoyMDI1MDYxNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
-          </div>
-        </li>
-        <li>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/La_Meliana_Beach_Valencia_Spain.jpg/320px-La_Meliana_Beach_Valencia_Spain.jpg" alt="Playa de la Meliana" />
-          <div class="info">
-            <strong>Playa de Meliana</strong>
-            <p>Un paraíso poco conocido, ideal para relajarse y desconectar.</p>
-            <a href="https://www.google.com/maps/place/Playa+de+Meliana/@39.5219607,-0.3210826,15.48z/data=!4m6!3m5!1s0xd6047877662d59b:0x4356c21b4800c16f!8m2!3d39.5223485!4d-0.3163417!16s%2Fg%2F11tgbr6866?entry=ttu&g_ep=EgoyMDI1MDYxNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
-          </div>
-        </li>
-      </ul>
-    </section>
+    <h1 class="section-title">Las mejores playas cerca de ti</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Ubicación</th>
+          <th>Descripción</th>
+          <th>Cómo llegar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Playa_Malvarrosa_Valencia.jpg/320px-Playa_Malvarrosa_Valencia.jpg" alt="Playa Alboraya" />
+            <div>Playa Alboraya</div>
+          </td>
+          <td>Alboraya, Valencia</td>
+          <td>Un espacio tranquilo con aguas claras ideal para familias.</td>
+          <td><a href="https://www.google.com/maps/place/Platja+de+la+Patacona/@39.5000329,-0.3316659,14.33z/data=!4m6!3m5!1s0xd6047d93a025c57:0xfb6c8e801c77407f!8m2!3d39.4895038!4d-0.3242144!16s%2Fg%2F11c319ndy4?entry=ttu&g_ep=EgoyMDI1MDYxNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Ver mapa</a></td>
+        </tr>
+        <tr>
+          <td>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Playa_Malvarrosa%2C_Valencia_2013_01.jpg/320px-Playa_Malvarrosa%2C_Valencia_2013_01.jpg" alt="Playa Malvarrosa" />
+            <div>Playa Malvarrosa</div>
+          </td>
+          <td>Valencia</td>
+          <td>La playa urbana más famosa de Valencia con amplio paseo marítimo.</td>
+          <td><a href="https://www.google.com/maps/place/Playa+de+la+Malvarrosa/@39.4769479,-0.3334281,15z/data=!3m1!4b1!4m6!3m5!1s0xd604873c969b2ad:0x603becf922d66bf4!8m2!3d39.47726!4d-0.3233746!16s%2Fg%2F120p4q76?entry=ttu&g_ep=EgoyMDI1MDYxNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Ver mapa</a></td>
+        </tr>
+        <tr>
+          <td>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Platja_de_Pinedo_Valencia_2013_01.jpg/320px-Platja_de_Pinedo_Valencia_2013_01.jpg" alt="Playa Pinedo" />
+            <div>Playa Pinedo</div>
+          </td>
+          <td>Pinedo, Valencia</td>
+          <td>Perfecta para quienes buscan menos aglomeración y naturaleza.</td>
+          <td><a href="https://www.google.com/maps/place/Playa+de+Pinedo/@39.421134,-0.3381289,16z/data=!3m1!4b1!4m6!3m5!1s0xd60499ed7c0df63:0xcd99085a86d1810a!8m2!3d39.4218939!4d-0.3330735!16s%2Fg%2F121v775z?entry=ttu&g_ep=EgoyMDI1MDYxNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Ver mapa</a></td>
+        </tr>
+        <tr>
+          <td>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/La_Meliana_Beach_Valencia_Spain.jpg/320px-La_Meliana_Beach_Valencia_Spain.jpg" alt="Playa de la Meliana" />
+            <div>Playa de Meliana</div>
+          </td>
+          <td>Meliana, Valencia</td>
+          <td>Un paraíso poco conocido, ideal para relajarse y desconectar.</td>
+          <td><a href="https://www.google.com/maps/place/Playa+de+Meliana/@39.5219607,-0.3210826,15.48z/data=!4m6!3m5!1s0xd6047877662d59b:0x4356c21b4800c16f!8m2!3d39.5223485!4d-0.3163417!16s%2Fg%2F11tgbr6866?entry=ttu&g_ep=EgoyMDI1MDYxNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Ver mapa</a></td>
+        </tr>
+      </tbody>
+    </table>
   </main>
 
   <footer>
     <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
+    <button class="back-btn" onclick="history.back()">Volver</button>
   </footer>
-
-  <button class="back-btn" onclick="history.back()">Volver</button>
 </body>
 </html>
