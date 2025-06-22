@@ -1,10 +1,8 @@
-/* Valencia/styles.css - estilo específico para la página de grupo */
-
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* evitar scroll horizontal */
+  overflow-x: hidden;
 }
 
 body {
@@ -13,7 +11,6 @@ body {
   color: #333;
 }
 
-/* Franjas naranjas superior e inferior */
 header, footer {
   background-color: #f97316;
   color: white;
@@ -23,19 +20,24 @@ header, footer {
   z-index: 2;
 }
 
-/* Contenedor principal con imagen de fondo entre franjas naranjas */
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+}
+
 main {
   padding: 20px;
-  width: 100vw; /* ancho total de la ventana */
-  min-height: calc(100vh - 140px); /* altura mínima, no fija */
+  padding-bottom: 40px; /* espacio para footer fijo */
+  width: 100vw;
+  min-height: calc(100vh - 60px); /* altura menos header */
   position: relative;
   z-index: 1;
-  background-image: url('../images/ciudad-artes-ciencias.jpg'); /* Ruta a la imagen */
+  background-image: url('../images/ciudad-artes-ciencias.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  /* border-radius: 15px; */ /* eliminado para que la imagen no se recorte */
-  /* box-shadow: 0 4px 10px rgba(0,0,0,0.1); */ /* eliminado para mantener la imagen limpia */
   box-shadow: none;
   margin: 0;
 }
@@ -49,15 +51,8 @@ h2 {
   margin-top: 20px;
   padding: 15px;
   border: 1px solid #f97316;
-  background-color: rgba(255, 247, 240, 0.85); /* Fondo semitransparente para legibilidad */
+  background-color: rgba(255, 247, 240, 0.85);
   border-radius: 10px;
-}
-
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  padding: 10px;
 }
 
 .btn {
