@@ -7,10 +7,8 @@
   <link rel="stylesheet" href="styles.css" />
   <style>
     body {
-      position: relative;
-      min-height: 100vh;
-      margin: 0;
       font-family: sans-serif;
+      margin: 0;
     }
 
     main {
@@ -30,55 +28,39 @@
       max-width: 400px;
     }
 
-    .form-section label {
-      font-weight: bold;
-      font-size: 18px;
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    .form-section select {
-      width: 100%;
-      padding: 12px;
-      font-size: 18px;
-      border-radius: 10px;
-      border: 2px solid #f97316;
-      appearance: none;
-      background: url('data:image/svg+xml;utf8,<svg fill="%23f97316" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 12px center;
-      background-color: white;
-      background-size: 16px;
-      cursor: pointer;
+    .form-section h2 {
       margin-bottom: 20px;
+      font-size: 20px;
     }
 
-    .btn {
+    .form-section button.option-btn {
       background-color: #f97316;
       color: white;
       border: none;
       border-radius: 25px;
-      padding: 10px 25px;
+      padding: 12px 20px;
+      margin: 10px 0;
       font-size: 16px;
       cursor: pointer;
+      width: 100%;
       transition: background-color 0.3s ease;
     }
 
-    .btn:hover {
+    .form-section button.option-btn:hover {
       background-color: #d65a00;
     }
 
     .back-btn {
-      position: fixed;
-      bottom: 20px;
+      position: absolute;
+      bottom: 60px;
       left: 20px;
       background-color: #f97316;
       color: white;
       border: none;
       border-radius: 25px;
-      padding: 8px 20px;
+      padding: 10px 20px;
       font-size: 15px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
-      z-index: 100;
     }
 
     .back-btn:hover {
@@ -94,16 +76,11 @@
 
   <main>
     <section class="form-section">
-      <label for="familyPlan">¿Qué te interesa descubrir?</label>
-      <select id="familyPlan">
-        <option value="">Seleccioná una opción</option>
-        <option value="playas">Mejores playas</option>
-        <option value="restaurantes">Mejores restaurantes</option>
-        <option value="museos">Museos más entretenidos</option>
-        <option value="centros">Centros comerciales</option>
-      </select>
-
-      <button class="btn" onclick="continuar()">Siguiente</button>
+      <h2>¿Qué te gustaría explorar?</h2>
+      <button class="option-btn" onclick="alert('Playas recomendadas en Valencia...')">Mejores playas</button>
+      <button class="option-btn" onclick="alert('Restaurantes ideales para familias...')">Mejores restaurantes</button>
+      <button class="option-btn" onclick="alert('Museos divertidos para grandes y chicos...')">Museos más entretenidos</button>
+      <button class="option-btn" onclick="alert('Centros comerciales con actividades para todos...')">Centros comerciales</button>
     </section>
   </main>
 
@@ -111,21 +88,6 @@
     <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
   </footer>
 
-  <!-- Botón Volver -->
   <button class="back-btn" onclick="history.back()">Volver</button>
-
-  <script>
-    function continuar() {
-      const seleccion = document.getElementById('familyPlan').value;
-
-      if (!seleccion) {
-        alert('Por favor seleccioná una opción para continuar.');
-        return;
-      }
-
-      // Acá podrías redirigir a otra página o mostrar contenido dinámico
-      alert('Seleccionaste: ' + seleccion);
-    }
-  </script>
 </body>
 </html>
