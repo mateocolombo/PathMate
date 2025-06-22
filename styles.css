@@ -1,3 +1,5 @@
+/* styles.css - general (junto al index.html) */
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -21,32 +23,45 @@ main {
 .form-section {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 15px;
 }
 
 label {
   font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
 }
 
+input[type="date"],
 select {
   padding: 10px;
   font-size: 16px;
   border: 2px solid #f97316;
-  border-radius: 5px;
-  -webkit-appearance: none; /* Quita estilo default en Safari */
-  -moz-appearance: none; /* Firefox */
+  border-radius: 10px;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
   appearance: none;
   background: url('data:image/svg+xml;utf8,<svg fill="%23f97316" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 10px center;
   background-size: 16px;
+  background-color: white;
   cursor: pointer;
 }
 
-.plan-output {
-  margin-top: 20px;
-  padding: 15px;
-  border: 1px solid #f97316;
-  background-color: #fff7f0;
-  border-radius: 5px;
+button {
+  background-color: #f97316;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #d65a00;
 }
 
 footer {
@@ -57,29 +72,4 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-}
-
-.btn {
-  padding: 10px 25px;
-  margin: 10px 5px;
-  background-color: #f97316;
-  color: white;
-  border: none;
-  border-radius: 25px; /* Bordes redondeados */
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 16px;
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #e86f0f;
-}
-
-.link-btn {
-  margin-bottom: 10px;
-  display: block;
 }
