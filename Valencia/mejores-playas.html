@@ -36,11 +36,22 @@
       margin: 0 auto;
     }
 
+    /* Contenedor con borde y fondo para el título */
+    .section-title-container {
+      display: inline-block;
+      background-color: white;
+      border: 3px solid #f97316;
+      border-radius: 15px;
+      padding: 10px 25px;
+      margin-bottom: 25px;
+      box-sizing: border-box;
+    }
+
     h1.section-title {
       color: #f97316;
       text-align: center;
-      margin-bottom: 25px;
       font-size: 28px;
+      margin: 0;
     }
 
     table {
@@ -97,14 +108,16 @@
 
     footer {
       background-color: #fff7f0;
-      padding: 20px;
-      text-align: center;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-top: 30px;
       box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
     }
 
     footer p {
-      margin: 0 0 10px;
+      margin: 0;
       font-size: 14px;
       color: #555;
     }
@@ -140,8 +153,21 @@
         padding: 8px 20px;
         font-size: 14px;
       }
-    }
 
+      footer {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 20px;
+      }
+
+      footer p {
+        text-align: center;
+      }
+
+      .back-btn {
+        align-self: flex-start;
+      }
+    }
   </style>
 </head>
 <body>
@@ -151,7 +177,9 @@
   </header>
 
   <main>
-    <h1 class="section-title">Las mejores playas cerca de ti</h1>
+    <div class="section-title-container">
+      <h1 class="section-title">Las mejores playas cerca de ti</h1>
+    </div>
     <table>
       <thead>
         <tr>
@@ -203,8 +231,8 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
     <button class="back-btn" onclick="history.back()">Volver</button>
+    <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
   </footer>
 </body>
 </html>
