@@ -73,6 +73,7 @@
         </section>
 
         <div class="nav-buttons">
+            <button id="goBackBtn">← Volver atrás</button>
             <button id="backBtn">← Volver</button>
             <button id="nextBtn">Siguiente →</button>
         </div>
@@ -83,57 +84,57 @@
     </footer>
 
     <script>
-        // Datos de museos con imágenes y URLs
+        // Datos de museos con imágenes locales y URLs
         const museumsData = [
             {
                 name: "Museo de Ciencias Príncipe Felipe",
                 url: "https://www.cac.es",
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Museo_Ciencias_Principe_Felipe.jpg/320px-Museo_Ciencias_Principe_Felipe.jpg"
+                img: "images/museums/museo_ciencias_principe_felipe.jpg"
             },
             {
                 name: "Museo Fallero",
                 url: "https://museofallero.com",
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Museo_Fallero_de_Valencia_-_Entrada.jpg/320px-Museo_Fallero_de_Valencia_-_Entrada.jpg"
+                img: "images/museums/museo_fallero.jpg"
             },
             {
                 name: "Museo de Bellas Artes de Valencia",
                 url: "https://www.museobellasartesvalencia.gva.es",
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Museo_de_Bellas_Artes_de_Valencia_02.jpg/320px-Museo_de_Bellas_Artes_de_Valencia_02.jpg"
+                img: "images/museums/museo_bellas_artes.jpg"
             },
             {
                 name: "IVAM - Instituto Valenciano de Arte Moderno",
                 url: "https://www.ivam.es",
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/IVAM_Valencia_2012_1.jpg/320px-IVAM_Valencia_2012_1.jpg"
+                img: "images/museums/ivam.jpg"
             },
             {
                 name: "Museo Taurino de Valencia",
                 url: "https://www.museotaurinovlc.com",
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Museo_Taurino_Valencia.jpg/320px-Museo_Taurino_Valencia.jpg"
+                img: "images/museums/museo_taurino.jpg"
             },
             {
                 name: "Museo de Historia de Valencia",
                 url: "https://museodehistoriadevalencia.com",
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Museo_Historia_Valencia.jpg/320px-Museo_Historia_Valencia.jpg"
+                img: "images/museums/museo_historia.jpg"
             },
             {
                 name: "Museo del Arroz",
                 url: "https://www.museodelarroz.com",
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Museo_del_Arroz_Valencia.jpg/320px-Museo_del_Arroz_Valencia.jpg"
+                img: "images/museums/museo_arroz.jpg"
             },
             {
                 name: "Museo de Etnología de Valencia",
                 url: "https://www.museoetnologiavalencia.com",
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Museo_Etnologia_Valencia.jpg/320px-Museo_Etnologia_Valencia.jpg"
+                img: "images/museums/museo_etnologia.jpg"
             },
             {
                 name: "Museo del Grao",
                 url: "https://www.museodelgrao.com",
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Museo_del_Grao_Valencia.jpg/320px-Museo_del_Grao_Valencia.jpg"
+                img: "images/museums/museo_grao.jpg"
             },
             {
                 name: "Museo Histórico Militar de Valencia",
                 url: "https://www.museohistoricomilitarvalencia.com",
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Museo_Historico_Militar_Valencia.jpg/320px-Museo_Historico_Militar_Valencia.jpg"
+                img: "images/museums/museo_historico_militar.jpg"
             }
         ];
 
@@ -153,15 +154,19 @@
 
         museumsList.innerHTML = crearListaMuseos(museumsData);
 
-        // Botones de navegación - ejemplo de funcionamiento simple
-        document.getElementById('backBtn').addEventListener('click', () => {
-            // Volver a la página anterior (aquí iría el archivo anterior)
-            window.location.href = 'group-select.html'; // Cambiar según la estructura que tengas
+        // Botón volver atrás (historial del navegador)
+        document.getElementById('goBackBtn').addEventListener('click', () => {
+            window.history.back();
         });
 
+        // Botón volver (a página anterior fija)
+        document.getElementById('backBtn').addEventListener('click', () => {
+            window.location.href = 'group-select.html'; // Cambiar si corresponde
+        });
+
+        // Botón siguiente
         document.getElementById('nextBtn').addEventListener('click', () => {
-            // Ir a la siguiente página (por ejemplo, gastronomía)
-            window.location.href = 'gastronomy.html'; // Cambiar según la estructura que tengas
+            window.location.href = 'gastronomy.html'; // Cambiar si corresponde
         });
     </script>
 </body>
