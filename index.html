@@ -5,10 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PathMate - Planifica tu viaje</title>
     <link rel="stylesheet" href="styles.css" />
+    <style>
+        button {
+            background-color: #f97316;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #d65a00;
+        }
+        /* Imagen mapa centrada */
+        .map-image {
+            display: block;
+            margin: 10px auto 20px auto;
+            max-width: 200px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>🌍 PathMate</h1>
+        <img class="map-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/World_map_blank_without_borders.svg/320px-World_map_blank_without_borders.svg.png" alt="Mapa mundial" />
         <p>Tu aliado para planear viajes inolvidables</p>
     </header>
 
@@ -16,25 +42,8 @@
         <section class="form-section">
             <p>Esta página te ayudará a organizar tu viaje de la mejor manera. Primero, seleccioná la fecha en la que viajarás.</p>
 
-            <label for="travelDay">Día:</label>
-            <input type="number" id="travelDay" name="travelDay" min="1" max="31" required />
-
-            <label for="travelMonth">Mes:</label>
-            <select id="travelMonth" name="travelMonth" required>
-                <option value="">Seleccioná un mes</option>
-                <option value="1">Enero</option>
-                <option value="2">Febrero</option>
-                <option value="3">Marzo</option>
-                <option value="4">Abril</option>
-                <option value="5">Mayo</option>
-                <option value="6">Junio</option>
-                <option value="7">Julio</option>
-                <option value="8">Agosto</option>
-                <option value="9">Septiembre</option>
-                <option value="10">Octubre</option>
-                <option value="11">Noviembre</option>
-                <option value="12">Diciembre</option>
-            </select>
+            <label for="travelDate">Fecha de viaje:</label>
+            <input type="date" id="travelDate" name="travelDate" required />
 
             <button id="nextBtn">Siguiente</button>
         </section>
@@ -48,17 +57,15 @@
         const nextBtn = document.getElementById('nextBtn');
 
         nextBtn.addEventListener('click', () => {
-            const day = document.getElementById('travelDay').value;
-            const month = document.getElementById('travelMonth').value;
+            const travelDate = document.getElementById('travelDate').value;
 
-            if (!day || !month) {
-                alert('Por favor, completá el día y el mes.');
+            if (!travelDate) {
+                alert('Por favor, seleccioná una fecha para tu viaje.');
                 return;
             }
 
-            // Guardamos la fecha en sessionStorage para usar en la siguiente página
-            sessionStorage.setItem('travelDay', day);
-            sessionStorage.setItem('travelMonth', month);
+            // Guardamos la fecha completa en sessionStorage
+            sessionStorage.setItem('travelDate', travelDate);
 
             // Redirigimos a la página del grupo
             window.location.href = 'group.html';
