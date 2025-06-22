@@ -57,7 +57,7 @@ h2 {
 .plan-output {
   margin-top: 0;
   padding: 15px;
-  border: -2px solid #f97316;
+  border: 2px solid #f97316;
   background-color: transparent; /* SIN fondo */
   border-radius: 10px;
 }
@@ -65,7 +65,7 @@ h2 {
 /* Botón volver sobre la imagen, un poco más arriba */
 .btn-volver {
   position: absolute;
-  top: -5px;
+  top: -10px;
   left: 15px;
   background-color: #f97316;
   color: white;
