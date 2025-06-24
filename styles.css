@@ -1,52 +1,108 @@
-/* styles.css - general (junto al index.html) */
+/* styles.css - Versión profesional para PathMate */
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #fff;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  background-color: #ffffff;
   color: #333;
+  line-height: 1.6;
 }
 
 header {
   background-color: #f97316;
   color: white;
   text-align: center;
-  padding: 15px;
+  padding: 30px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+header p {
+  margin-top: 10px;
+  font-size: 1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 main {
-  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 40px 20px 120px;
+  gap: 40px;
+}
+
+.about-section,
+.form-section {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 25px 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  flex: 1 1 400px;
   max-width: 600px;
-  margin: auto;
+}
+
+.about-section h2,
+.form-section h2 {
+  margin-top: 0;
+  color: #f97316;
+}
+
+.about-section p {
+  margin-bottom: 15px;
 }
 
 .form-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 15px;
+  align-items: stretch;
+}
+
+.form-section p {
+  margin-bottom: 20px;
 }
 
 label {
-  font-weight: bold;
-  display: block;
+  font-weight: 600;
   margin-bottom: 5px;
+  display: block;
+  font-size: 15px;
 }
 
 input[type="date"],
 select {
-  padding: 10px;
-  font-size: 18px;
-  border: 2px solid #f97316;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
   border-radius: 10px;
   width: 100%;
-  max-width: 300px;
-  box-sizing: border-box;
-  appearance: none;
-  background: url('data:image/svg+xml;utf8,<svg fill="%23f97316" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 10px center;
-  background-size: 16px;
+  margin-bottom: 20px;
   background-color: white;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23f97316" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
   cursor: pointer;
+}
+
+.date-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.date-group input {
+  flex: 1 1 150px;
 }
 
 button {
@@ -54,10 +110,12 @@ button {
   color: white;
   border: none;
   border-radius: 25px;
-  padding: 10px 25px;
+  padding: 12px 30px;
   font-size: 16px;
   cursor: pointer;
+  align-self: center;
   transition: background-color 0.3s ease;
+  margin-top: 10px;
 }
 
 button:hover {
@@ -68,8 +126,28 @@ footer {
   background-color: #f97316;
   color: white;
   text-align: center;
-  padding: 10px;
+  padding: 15px;
   position: fixed;
   bottom: 0;
   width: 100%;
+  font-size: 14px;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive: móviles */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+    padding: 20px 15px 120px;
+  }
+
+  .about-section,
+  .form-section {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .date-group {
+    flex-direction: column;
+  }
 }
