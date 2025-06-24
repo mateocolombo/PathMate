@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PathMate - Planificá tu viaje soñado</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
@@ -15,19 +15,26 @@
   <main>
     <section class="about-section">
       <h2>¿Quiénes somos?</h2>
-      <p>PathMate es una solución integral diseñada para viajeros modernos que buscan optimizar la planificación de sus recorridos turísticos. Nos dedicamos a facilitar la organización de viajes personalizados, brindando herramientas simples pero potentes para coordinar fechas, destinos y grupos, todo desde un solo lugar.</p>
-      <p>Con el respaldo de tecnología intuitiva y una interfaz amigable, nuestro objetivo es eliminar el estrés de la planificación y ayudarte a disfrutar al máximo cada etapa de tu aventura.</p>
+      <p><strong>PathMate</strong> es una solución integral diseñada para viajeros modernos que buscan optimizar la planificación de sus recorridos turísticos.</p>
+      <p>Te ofrecemos herramientas ágiles para elegir fechas, destinos y organizar grupos de forma sencilla. Nuestra plataforma combina diseño intuitivo y tecnología para ayudarte a ahorrar tiempo, reducir el estrés y vivir experiencias memorables.</p>
+      <p>Ya sea un viaje personal, grupal o corporativo, PathMate es tu compañero confiable para llegar más lejos.</p>
     </section>
 
     <section class="form-section">
-      <h2>Organizá tu próximo viaje</h2>
-      <p>Seleccioná las fechas de salida y regreso, y tu ciudad de destino para comenzar a crear tu experiencia personalizada.</p>
+      <h2>Planificá tu próximo viaje</h2>
+      <p>Comenzá seleccionando la fecha de salida, regreso y el destino de tu aventura.</p>
 
-      <label for="travelDate">Fecha de salida:</label>
-      <input type="date" id="travelDate" name="travelDate" required>
+      <div class="date-group">
+        <div>
+          <label for="travelDate">Fecha de salida:</label>
+          <input type="date" id="travelDate" name="travelDate" required />
+        </div>
 
-      <label for="returnDate">Fecha de regreso:</label>
-      <input type="date" id="returnDate" name="returnDate" required>
+        <div>
+          <label for="returnDate">Fecha de regreso:</label>
+          <input type="date" id="returnDate" name="returnDate" required />
+        </div>
+      </div>
 
       <label for="citySelect">Destino:</label>
       <select id="citySelect" name="citySelect" required>
@@ -64,8 +71,8 @@
         return;
       }
 
-      if (travelDate > returnDate) {
-        alert('La fecha de regreso no puede ser anterior a la de salida.');
+      if (returnDate < travelDate) {
+        alert('La fecha de regreso no puede ser anterior a la fecha de salida.');
         return;
       }
 
