@@ -9,32 +9,25 @@
 <body>
   <header>
     <h1>🌍 PathMate Spain</h1>
-    <p>Tu plataforma inteligente para organizar viajes inolvidables con eficiencia y confianza</p>
+    <p>Tu plataforma inteligente para organizar viajes inolvidables</p>
   </header>
 
   <main>
     <section class="about-section">
       <h2>¿Quiénes somos?</h2>
-      <p><strong>PathMate</strong> es una solución integral diseñada para viajeros modernos que buscan optimizar la planificación de sus recorridos turísticos.</p>
-      <p>Te ofrecemos herramientas ágiles para elegir fechas, destinos y organizar grupos de forma sencilla. Nuestra plataforma combina diseño intuitivo y tecnología para ayudarte a ahorrar tiempo, reducir el estrés y vivir experiencias memorables.</p>
-      <p>Ya sea un viaje personal, grupal o corporativo, PathMate es tu compañero confiable para llegar más lejos.</p>
+      <p>PathMate es una solución integral pensada para viajeros modernos que buscan optimizar cada etapa de su recorrido. Con una plataforma intuitiva y amigable, te ayudamos a organizar viajes a medida, gestionar grupos y planificar experiencias memorables.</p>
+      <p>Ya sea que viajes solo o en grupo, PathMate pone en tus manos herramientas prácticas para coordinar fechas, destinos y actividades sin complicaciones.</p>
     </section>
 
     <section class="form-section">
-      <h2>Planificá tu próximo viaje</h2>
-      <p>Comenzá seleccionando la fecha de salida, regreso y el destino de tu aventura.</p>
+      <h2>Organizá tu próximo viaje</h2>
+      <p>Completá los datos y comenzá a planear tu experiencia personalizada.</p>
 
-      <div class="date-group">
-        <div>
-          <label for="travelDate">Fecha de salida:</label>
-          <input type="date" id="travelDate" name="travelDate" required />
-        </div>
+      <label for="travelDate">Fecha de salida:</label>
+      <input type="date" id="travelDate" name="travelDate" required />
 
-        <div>
-          <label for="returnDate">Fecha de regreso:</label>
-          <input type="date" id="returnDate" name="returnDate" required />
-        </div>
-      </div>
+      <label for="returnDate">Fecha de regreso:</label>
+      <input type="date" id="returnDate" name="returnDate" required />
 
       <label for="citySelect">Destino:</label>
       <select id="citySelect" name="citySelect" required>
@@ -72,7 +65,7 @@
       }
 
       if (returnDate < travelDate) {
-        alert('La fecha de regreso no puede ser anterior a la fecha de salida.');
+        alert('La fecha de regreso no puede ser anterior a la de salida.');
         return;
       }
 
@@ -81,9 +74,15 @@
         return;
       }
 
+      const startDate = new Date(travelDate);
+      const endDate = new Date(returnDate);
+      const diffTime = endDate - startDate;
+      const stayDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
       sessionStorage.setItem('travelDate', travelDate);
       sessionStorage.setItem('returnDate', returnDate);
       sessionStorage.setItem('city', city);
+      sessionStorage.setItem('stayDays', stayDays);
 
       const url = `${city}/group.html`;
       window.location.href = url;
