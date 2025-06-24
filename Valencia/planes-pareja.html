@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PathMate - Planes de Pareja</title>
+  <title>PathMate - Planes para parejas</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Reset box-sizing */
     * {
       box-sizing: border-box;
     }
 
-    body {
-      font-family: sans-serif;
+    html, body {
       margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: sans-serif;
       background-color: #fff7f0;
+    }
+
+    body {
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
     }
 
     header {
@@ -26,6 +29,9 @@
       padding: 15px 20px;
       text-align: center;
       flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     header h1 {
@@ -39,30 +45,57 @@
     }
 
     main {
-      flex-grow: 1;
+      flex: 1 0 auto;
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       padding: 20px;
+      gap: 20px;
     }
 
-    .form-section {
-      text-align: center;
-      background-color: #fff7f0;
-      padding: 30px;
+    .plan-left, .options-right {
+      flex: 1;
+      min-width: 300px;
+      max-width: 600px;
+      background-color: #fff;
+      padding: 20px;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      width: 90%;
-      max-width: 400px;
     }
 
-    .form-section h2 {
-      margin-bottom: 20px;
-      font-size: 20px;
+    .plan-left h2,
+    .options-right h2 {
       color: #f97316;
+      margin-top: 0;
     }
 
-    .form-section button.option-btn {
+    .plan-left p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .plan-left a {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #f97316;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: background-color 0.3s ease;
+    }
+
+    .plan-left a:hover {
+      background-color: #d65a00;
+    }
+
+    .options-right {
+      text-align: center;
+      background-color: #fff7f0;
+    }
+
+    .option-btn {
       background-color: #f97316;
       color: white;
       border: none;
@@ -75,7 +108,7 @@
       transition: background-color 0.3s ease;
     }
 
-    .form-section button.option-btn:hover {
+    .option-btn:hover {
       background-color: #d65a00;
     }
 
@@ -85,18 +118,15 @@
       display: flex;
       align-items: center;
       gap: 20px;
-      box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
       color: #555;
       font-size: 14px;
-      flex-shrink: 0;
       flex-wrap: wrap;
+      flex-shrink: 0;
     }
 
     footer p {
       margin: 0;
-      white-space: normal;
-      overflow: visible;
-      text-overflow: unset;
       flex-grow: 1;
       text-align: left;
     }
@@ -109,8 +139,8 @@
       padding: 10px 25px;
       font-size: 16px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
       flex-shrink: 0;
+      transition: background-color 0.3s ease;
     }
 
     .back-btn:hover {
@@ -118,17 +148,23 @@
     }
 
     @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+        padding: 20px 15px;
+      }
+
+      .plan-left, .options-right {
+        width: 100%;
+        max-width: none;
+        padding: 15px;
+      }
+
       footer {
         flex-direction: column;
         gap: 10px;
         padding: 15px 20px;
         font-size: 13px;
         align-items: flex-start;
-      }
-
-      footer p {
-        text-align: left;
-        white-space: normal;
       }
 
       .back-btn {
@@ -142,12 +178,18 @@
 <body>
   <header>
     <h1>🌍 PathMate</h1>
-    <p>Planes para viajes de pareja</p>
+    <p>Planes románticos para disfrutar en pareja</p>
   </header>
 
   <main>
-    <section class="form-section">
-      <h2>Elegí una opción para tu viaje romántico</h2>
+    <section class="plan-left" id="planPareja">
+      <h2>Plan romántico para <span id="diasPareja">X</span> día(s)</h2>
+      <p id="descripcionPareja">Cargando plan...</p>
+      <a href="#" id="detalleParejaLink">Ver detalle del plan</a>
+    </section>
+
+    <section class="options-right">
+      <h2>Elegí una opción</h2>
       <button class="option-btn" onclick="window.location.href='restaurantes-romanticos.html'">Mejores restaurantes románticos</button>
       <button class="option-btn" onclick="window.location.href='mejores-playas.html'">Mejores playas</button>
       <button class="option-btn" onclick="window.location.href='mejores-experiencias.html'">Mejores experiencias</button>
@@ -158,5 +200,46 @@
     <button class="back-btn" onclick="history.back()">← Volver</button>
     <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
   </footer>
+
+  <script>
+    const dias = sessionStorage.getItem('days') || '3';
+    const diasSpan = document.getElementById('diasPareja');
+    const descripcion = document.getElementById('descripcionPareja');
+    const link = document.getElementById('detalleParejaLink');
+
+    diasSpan.textContent = dias;
+
+    const planesRomanticos = {
+      "1": {
+        descripcion: "Un día para una cita especial con atardecer en la playa.",
+        link: "pareja-plan-1-dia.html"
+      },
+      "2": {
+        descripcion: "Dos días de aventuras y cenas románticas en Valencia.",
+        link: "pareja-plan-2-dias.html"
+      },
+      "3": {
+        descripcion: "Un fin de semana inolvidable lleno de amor y experiencias.",
+        link: "pareja-plan-3-dias.html"
+      },
+      "4": {
+        descripcion: "Cuatro días explorando los rincones más románticos de la ciudad.",
+        link: "pareja-plan-4-dias.html"
+      },
+      "5": {
+        descripcion: "Cinco días para reconectar, relajarse y disfrutar a pleno.",
+        link: "pareja-plan-5-dias.html"
+      }
+    };
+
+    if (planesRomanticos[dias]) {
+      descripcion.textContent = planesRomanticos[dias].descripcion;
+      link.href = planesRomanticos[dias].link;
+      link.style.display = 'inline-block';
+    } else {
+      descripcion.textContent = "Explorá nuestras opciones para armar tu viaje perfecto.";
+      link.style.display = 'none';
+    }
+  </script>
 </body>
 </html>
