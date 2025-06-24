@@ -36,28 +36,65 @@
     main {
       flex-grow: 1;
       display: flex;
-      justify-content: center;
-      align-items: center;
       padding: 20px;
+      gap: 20px;
+      justify-content: center;
+      align-items: flex-start;
     }
 
-    .form-section {
-      text-align: center;
+    /* Contenedor izquierdo para plan personalizado */
+    .plan-left {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 40%;
+      min-width: 280px;
+    }
+
+    .plan-left h2 {
+      color: #f97316;
+      margin-top: 0;
+    }
+
+    .plan-left p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .plan-left a {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #f97316;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: background-color 0.3s ease;
+    }
+
+    .plan-left a:hover {
+      background-color: #d65a00;
+    }
+
+    /* Contenedor derecho para opciones */
+    .options-right {
       background-color: #fff7f0;
       padding: 30px;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      width: 90%;
-      max-width: 400px;
+      width: 40%;
+      min-width: 280px;
+      text-align: center;
     }
 
-    .form-section h2 {
+    .options-right h2 {
       margin-bottom: 20px;
       font-size: 20px;
       color: #f97316;
     }
 
-    .form-section button.option-btn {
+    .option-btn {
       background-color: #f97316;
       color: white;
       border: none;
@@ -70,7 +107,7 @@
       transition: background-color 0.3s ease;
     }
 
-    .form-section button.option-btn:hover {
+    .option-btn:hover {
       background-color: #d65a00;
     }
 
@@ -113,6 +150,16 @@
     }
 
     @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .plan-left, .options-right {
+        width: 100%;
+        min-width: auto;
+      }
+
       footer {
         flex-direction: column;
         gap: 10px;
@@ -141,7 +188,13 @@
   </header>
 
   <main>
-    <section class="form-section">
+    <section class="plan-left" id="planPersonalizado">
+      <h2>Tu mejor plan para <span id="diasPlan">X</span> días</h2>
+      <p id="descripcionPlan">Cargando plan...</p>
+      <a href="#" id="detallePlanLink">Ver detalle del plan</a>
+    </section>
+
+    <section class="options-right">
       <h2>Elegí una opción</h2>
       <button class="option-btn" onclick="window.location.href='mejores-playas.html'">Mejores playas</button>
       <button class="option-btn" onclick="window.location.href='sitios-nocturnos.html'">Sitios nocturnos</button>
@@ -154,5 +207,43 @@
     <button class="back-btn" onclick="history.back()">← Volver</button>
     <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
   </footer>
+
+  <script>
+    // Obtengo los días desde sessionStorage
+    const dias = sessionStorage.getItem('diasEstadia') || 'X';
+
+    // Elementos para mostrar datos
+    const diasSpan = document.getElementById('diasPlan');
+    const descripcionPlan = document.getElementById('descripcionPlan');
+    const detallePlanLink = document.getElementById('detallePlanLink');
+
+    diasSpan.textContent = dias;
+
+    // Aquí podés personalizar la descripción y link según la cantidad de días
+    // Por ahora solo ejemplo estático:
+
+    const planesPorDias = {
+      "3": {
+        descripcion: "Disfrutá un fin de semana lleno de playas y vida nocturna en Valencia.",
+        link: "plan-3-dias.html"
+      },
+      "5": {
+        descripcion: "Explorá las mejores atracciones y sitios culturales durante 5 días.",
+        link: "plan-5-dias.html"
+      },
+      "8": {
+        descripcion: "Un plan completo para disfrutar al máximo de Valencia en 8 días.",
+        link: "plan-8-dias.html"
+      }
+    };
+
+    if (planesPorDias[dias]) {
+      descripcionPlan.textContent = planesPorDias[dias].descripcion;
+      detallePlanLink.href = planesPorDias[dias].link;
+    } else {
+      descripcionPlan.textContent = "Explorá nuestras opciones para personalizar tu viaje.";
+      detallePlanLink.style.display = 'none';
+    }
+  </script>
 </body>
 </html>
