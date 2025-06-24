@@ -170,6 +170,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Lee variables de sessionStorage (asegúrate que ya estén guardadas en la página anterior)
       const city = sessionStorage.getItem('city') || 'tu ciudad';
       const days = sessionStorage.getItem('days') || 'X';
 
@@ -178,6 +179,13 @@
     });
 
     function redirigir(tipo) {
+      // Por si acaso, vuelvo a guardar la variable antes de redirigir
+      const days = sessionStorage.getItem('days') || '3';  // Cambiar o confirmar según necesidad
+      const city = sessionStorage.getItem('city') || 'Valencia';
+
+      sessionStorage.setItem('days', days);
+      sessionStorage.setItem('city', city);
+
       switch (tipo) {
         case 'familia':
           window.location.href = 'planes-familia.html';
