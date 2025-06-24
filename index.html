@@ -1,150 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PathMate - Planifica tu viaje</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-    }
-
-    header {
-      text-align: center;
-      padding: 10px 20px; /* achicado */
-      background-color: #f97316;
-      color: white;
-    }
-
-    .map-image {
-      display: block;
-      margin: 10px auto 20px auto;
-      max-width: 200px;
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-    }
-
-    main {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: flex-start;
-      gap: 40px;
-      padding: 20px;
-      padding-bottom: 140px; /* aumentado para dejar espacio al footer */
-    }
-
-    .about-section {
-      flex: 1;
-      max-width: 600px;
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      padding: 15px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      align-self: stretch;
-    }
-
-    .form-section {
-      flex: 1;
-      max-width: 400px;
-      text-align: center;
-      margin-bottom: 80px; /* agregado para evitar que el botón quede tapado */
-    }
-
-    label {
-      font-weight: bold;
-      margin-bottom: 5px;
-      display: block;
-    }
-
-    select, input[type="date"] {
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-      width: 100%;
-      margin-bottom: 15px;
-    }
-
-    button {
-      background-color: #f97316;
-      color: white;
-      border: none;
-      border-radius: 25px;
-      padding: 10px 25px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      margin-top: 20px;
-    }
-
-    button:hover {
-      background-color: #d65a00;
-    }
-
-    footer {
-      background-color: #f97316;
-      color: white;
-      text-align: center;
-      padding: 15px 10px;
-      position: fixed;
-      width: 100%;
-      bottom: 0;
-      font-size: 14px;
-    }
-
-    @media (max-width: 768px) {
-      main {
-        flex-direction: column;
-        align-items: center;
-        padding: 15px;
-        padding-bottom: 140px; /* importante también en móvil */
-      }
-
-      .about-section {
-        width: 100%;
-        max-width: 500px;
-        margin-bottom: 20px;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PathMate - Planificá tu viaje soñado</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
     <h1>🌍 PathMate Spain</h1>
-    <p>Tu aliado para planear viajes inolvidables</p>
+    <p>Tu plataforma inteligente para organizar viajes inolvidables con eficiencia y confianza</p>
   </header>
 
   <main>
     <section class="about-section">
-      <h2>Sobre nosotros</h2>
-      <p>En PathMate, te ayudamos a planear tu aventura perfecta. Desde la elección del destino hasta la organización del grupo, te guiamos paso a paso para que vivas una experiencia inolvidable sin estrés.</p>
+      <h2>¿Quiénes somos?</h2>
+      <p>PathMate es una solución integral diseñada para viajeros modernos que buscan optimizar la planificación de sus recorridos turísticos. Nos dedicamos a facilitar la organización de viajes personalizados, brindando herramientas simples pero potentes para coordinar fechas, destinos y grupos, todo desde un solo lugar.</p>
+      <p>Con el respaldo de tecnología intuitiva y una interfaz amigable, nuestro objetivo es eliminar el estrés de la planificación y ayudarte a disfrutar al máximo cada etapa de tu aventura.</p>
     </section>
 
     <section class="form-section">
-      <p>Esta página te ayudará a organizar tu viaje de la mejor manera.</p>
+      <h2>Organizá tu próximo viaje</h2>
+      <p>Seleccioná las fechas de salida y regreso, y tu ciudad de destino para comenzar a crear tu experiencia personalizada.</p>
 
-      <label for="travelDate">Fecha de viaje:</label>
-      <input type="date" id="travelDate" name="travelDate" required />
+      <label for="travelDate">Fecha de salida:</label>
+      <input type="date" id="travelDate" name="travelDate" required>
 
-      <label for="citySelect">Ciudad de destino:</label>
+      <label for="returnDate">Fecha de regreso:</label>
+      <input type="date" id="returnDate" name="returnDate" required>
+
+      <label for="citySelect">Destino:</label>
       <select id="citySelect" name="citySelect" required>
-        <option value="">-- Seleccioná una ciudad --</option>
+        <option value="">-- Elegí una ciudad --</option>
         <option value="Barcelona">Barcelona</option>
         <option value="Madrid">Madrid</option>
         <option value="Sevilla">Sevilla</option>
         <option value="Valencia">Valencia</option>
       </select>
 
-      <button id="nextBtn">Siguiente</button>
+      <button id="nextBtn">Continuar</button>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
+    <p>&copy; 2025 PathMate · Conectamos personas, destinos y experiencias</p>
   </footer>
 
   <script>
@@ -152,19 +51,31 @@
 
     nextBtn.addEventListener('click', () => {
       const travelDate = document.getElementById('travelDate').value;
+      const returnDate = document.getElementById('returnDate').value;
       const city = document.getElementById('citySelect').value;
 
       if (!travelDate) {
-        alert('Por favor, seleccioná una fecha para tu viaje.');
+        alert('Por favor, seleccioná una fecha de salida.');
+        return;
+      }
+
+      if (!returnDate) {
+        alert('Por favor, seleccioná una fecha de regreso.');
+        return;
+      }
+
+      if (travelDate > returnDate) {
+        alert('La fecha de regreso no puede ser anterior a la de salida.');
         return;
       }
 
       if (!city) {
-        alert('Por favor, seleccioná una ciudad de destino.');
+        alert('Por favor, elegí una ciudad de destino.');
         return;
       }
 
       sessionStorage.setItem('travelDate', travelDate);
+      sessionStorage.setItem('returnDate', returnDate);
       sessionStorage.setItem('city', city);
 
       const url = `${city}/group.html`;
