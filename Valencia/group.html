@@ -85,8 +85,6 @@
       background-color: #d65a00;
     }
 
-    /* FOOTER styles copied from second example */
-
     footer {
       background-color: #f0e6db;
       padding: 20px 30px;
@@ -152,8 +150,8 @@
     <h1>🌍 PathMate</h1>
   </header>
 
-  <div class="question-box">
-    ¿Qué tipo de viaje vas a hacer en Valencia?
+  <div class="question-box" id="questionBox">
+    <!-- Aquí se mostrará la pregunta con días y ciudad -->
   </div>
 
   <main>
@@ -171,6 +169,14 @@
   </footer>
 
   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const city = sessionStorage.getItem('city') || 'tu ciudad';
+      const days = sessionStorage.getItem('days') || 'X';
+
+      const questionBox = document.getElementById('questionBox');
+      questionBox.textContent = `¿Cómo te gustaría disfrutar los ${days} día${days == 1 ? '' : 's'} en ${city}?`;
+    });
+
     function redirigir(tipo) {
       switch (tipo) {
         case 'familia':
