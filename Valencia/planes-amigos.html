@@ -40,6 +40,9 @@
       gap: 20px;
       justify-content: center;
       align-items: flex-start;
+      padding-bottom: calc(50px + env(safe-area-inset-bottom));
+      /* deja espacio abajo para la barra del navegador */
+      box-sizing: border-box;
     }
 
     /* Contenedor izquierdo para plan personalizado */
@@ -50,6 +53,7 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       width: 40%;
       min-width: 280px;
+      box-sizing: border-box;
     }
 
     .plan-left h2 {
@@ -86,6 +90,7 @@
       width: 40%;
       min-width: 280px;
       text-align: center;
+      box-sizing: border-box;
     }
 
     .options-right h2 {
@@ -114,6 +119,8 @@
     footer {
       background-color: #f0e6db;
       padding: 20px 30px;
+      padding-bottom: calc(20px + env(safe-area-inset-bottom));
+      /* Para respetar safe area en móviles */
       display: flex;
       align-items: center;
       gap: 20px;
@@ -122,6 +129,9 @@
       font-size: 14px;
       flex-shrink: 0;
       flex-wrap: wrap;
+      position: relative;
+      z-index: 10;
+      box-sizing: border-box;
     }
 
     footer p {
@@ -153,17 +163,21 @@
       main {
         flex-direction: column;
         gap: 20px;
+        padding: 20px 15px;
+        padding-bottom: calc(50px + env(safe-area-inset-bottom));
       }
 
       .plan-left, .options-right {
         width: 100%;
         min-width: auto;
+        padding: 15px;
       }
 
       footer {
         flex-direction: column;
         gap: 10px;
         padding: 15px 20px;
+        padding-bottom: calc(15px + env(safe-area-inset-bottom));
         font-size: 13px;
         align-items: flex-start;
       }
