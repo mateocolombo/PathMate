@@ -53,41 +53,49 @@
     <p>&copy; 2025 PathMate · Conectamos personas, destinos y experiencias</p>
   </footer>
 
-  <script>
-    const nextBtn = document.getElementById('nextBtn');
+<script>
+  const nextBtn = document.getElementById('nextBtn');
 
-    nextBtn.addEventListener('click', () => {
-      const travelDate = document.getElementById('travelDate').value;
-      const returnDate = document.getElementById('returnDate').value;
-      const city = document.getElementById('citySelect').value;
+  nextBtn.addEventListener('click', () => {
+    const travelDate = document.getElementById('travelDate').value;
+    const returnDate = document.getElementById('returnDate').value;
+    const city = document.getElementById('citySelect').value;
 
-      if (!travelDate) {
-        alert('Por favor, seleccioná una fecha de salida.');
-        return;
-      }
+    if (!travelDate) {
+      alert('Por favor, seleccioná una fecha de salida.');
+      return;
+    }
 
-      if (!returnDate) {
-        alert('Por favor, seleccioná una fecha de regreso.');
-        return;
-      }
+    if (!returnDate) {
+      alert('Por favor, seleccioná una fecha de regreso.');
+      return;
+    }
 
-      if (returnDate < travelDate) {
-        alert('La fecha de regreso no puede ser anterior a la fecha de salida.');
-        return;
-      }
+    if (returnDate < travelDate) {
+      alert('La fecha de regreso no puede ser anterior a la fecha de salida.');
+      return;
+    }
 
-      if (!city) {
-        alert('Por favor, elegí una ciudad de destino.');
-        return;
-      }
+    if (!city) {
+      alert('Por favor, elegí una ciudad de destino.');
+      return;
+    }
 
-      sessionStorage.setItem('travelDate', travelDate);
-      sessionStorage.setItem('returnDate', returnDate);
-      sessionStorage.setItem('city', city);
+    // Calcular cantidad de días entre fechas
+    const start = new Date(travelDate);
+    const end = new Date(returnDate);
+    const timeDiff = end - start;
+    // +1 para incluir el día de salida también
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24)) + 1;
 
-      const url = `${city}/group.html`;
-      window.location.href = url;
-    });
-  </script>
+    sessionStorage.setItem('travelDate', travelDate);
+    sessionStorage.setItem('returnDate', returnDate);
+    sessionStorage.setItem('city', city);
+    sessionStorage.setItem('days', days);  // guardo la cantidad de días
+
+    const url = `${city}/group.html`;
+    window.location.href = url;
+  });
+</script>
 </body>
 </html>
