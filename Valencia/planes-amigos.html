@@ -6,6 +6,10 @@
   <title>PathMate - Planes para amigos</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: sans-serif;
       margin: 0;
@@ -36,27 +40,25 @@
     main {
       flex-grow: 1;
       display: flex;
-      padding: 20px;
-      gap: 20px;
+      flex-wrap: wrap;
       justify-content: center;
       align-items: flex-start;
-      padding-bottom: calc(50px + env(safe-area-inset-bottom));
-      /* deja espacio abajo para la barra del navegador */
-      box-sizing: border-box;
+      padding: 20px;
+      gap: 20px;
     }
 
-    /* Contenedor izquierdo para plan personalizado */
-    .plan-left {
+    .plan-left, .options-right {
+      flex: 1;
+      min-width: 300px;
+      max-width: 600px;
       background-color: #fff;
       padding: 20px;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      width: 40%;
-      min-width: 280px;
-      box-sizing: border-box;
     }
 
-    .plan-left h2 {
+    .plan-left h2,
+    .options-right h2 {
       color: #f97316;
       margin-top: 0;
     }
@@ -81,22 +83,9 @@
       background-color: #d65a00;
     }
 
-    /* Contenedor derecho para opciones */
     .options-right {
-      background-color: #fff7f0;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      width: 40%;
-      min-width: 280px;
       text-align: center;
-      box-sizing: border-box;
-    }
-
-    .options-right h2 {
-      margin-bottom: 20px;
-      font-size: 20px;
-      color: #f97316;
+      background-color: #fff7f0;
     }
 
     .option-btn {
@@ -119,26 +108,20 @@
     footer {
       background-color: #f0e6db;
       padding: 20px 30px;
-      padding-bottom: calc(20px + env(safe-area-inset-bottom));
-      /* Para respetar safe area en móviles */
       display: flex;
       align-items: center;
       gap: 20px;
-      box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
       color: #555;
       font-size: 14px;
-      flex-shrink: 0;
       flex-wrap: wrap;
       position: relative;
       z-index: 10;
-      box-sizing: border-box;
+      flex-shrink: 0;
     }
 
     footer p {
       margin: 0;
-      white-space: normal;
-      overflow: visible;
-      text-overflow: unset;
       flex-grow: 1;
       text-align: left;
     }
@@ -162,14 +145,12 @@
     @media (max-width: 768px) {
       main {
         flex-direction: column;
-        gap: 20px;
         padding: 20px 15px;
-        padding-bottom: calc(50px + env(safe-area-inset-bottom));
       }
 
       .plan-left, .options-right {
         width: 100%;
-        min-width: auto;
+        max-width: none;
         padding: 15px;
       }
 
@@ -177,14 +158,8 @@
         flex-direction: column;
         gap: 10px;
         padding: 15px 20px;
-        padding-bottom: calc(15px + env(safe-area-inset-bottom));
         font-size: 13px;
         align-items: flex-start;
-      }
-
-      footer p {
-        text-align: left;
-        white-space: normal;
       }
 
       .back-btn {
@@ -223,17 +198,13 @@
   </footer>
 
   <script>
-    // Obtengo los días desde sessionStorage (la clave es 'days' como en tu primer archivo)
-    const dias = sessionStorage.getItem('days') || '3'; // valor por defecto 3
-
-    // Elementos para mostrar datos
+    const dias = sessionStorage.getItem('days') || '3';
     const diasSpan = document.getElementById('diasPlan');
     const descripcionPlan = document.getElementById('descripcionPlan');
     const detallePlanLink = document.getElementById('detallePlanLink');
 
     diasSpan.textContent = dias;
 
-    // Defino planes para días de 1 a 5
     const planesPorDias = {
       "1": {
         descripcion: "Un día perfecto para disfrutar lo mejor de Valencia.",
@@ -257,7 +228,6 @@
       }
     };
 
-    // Muestro el plan correspondiente, o un mensaje genérico si no está en el rango
     if (planesPorDias[dias]) {
       descripcionPlan.textContent = planesPorDias[dias].descripcion;
       detallePlanLink.href = planesPorDias[dias].link;
