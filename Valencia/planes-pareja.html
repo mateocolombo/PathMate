@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PathMate - Planes para parejas</title>
+  <title>PathMate - Planes Familia</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
     * {
@@ -13,7 +13,6 @@
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
       font-family: sans-serif;
       background-color: #fff7f0;
     }
@@ -21,6 +20,7 @@
     body {
       display: flex;
       flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
@@ -45,7 +45,7 @@
     }
 
     main {
-      flex: 1 0 auto;
+      flex: 1;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -178,21 +178,22 @@
 <body>
   <header>
     <h1>🌍 PathMate</h1>
-    <p>Planes románticos para disfrutar en pareja</p>
+    <p>Planes ideales para tu viaje en familia</p>
   </header>
 
   <main>
-    <section class="plan-left" id="planPareja">
-      <h2>Plan romántico para <span id="diasPareja">X</span> día(s)</h2>
-      <p id="descripcionPareja">Cargando plan...</p>
-      <a href="#" id="detalleParejaLink">Ver detalle del plan</a>
+    <section class="plan-left" id="planPersonalizado">
+      <h2>Plan familiar para <span id="diasPlan">X</span> día(s)</h2>
+      <p id="descripcionPlan">Cargando plan...</p>
+      <a href="#" id="detallePlanLink">Ver detalle del plan</a>
     </section>
 
     <section class="options-right">
-      <h2>Elegí una opción</h2>
-      <button class="option-btn" onclick="window.location.href='restaurantes-romanticos.html'">Mejores restaurantes románticos</button>
+      <h2>¿Qué te gustaría explorar?</h2>
       <button class="option-btn" onclick="window.location.href='mejores-playas.html'">Mejores playas</button>
-      <button class="option-btn" onclick="window.location.href='mejores-experiencias.html'">Mejores experiencias</button>
+      <button class="option-btn" onclick="window.location.href='mejores-restaurantes.html'">Mejores restaurantes</button>
+      <button class="option-btn" onclick="window.location.href='museos-entretenidos.html'">Museos más entretenidos</button>
+      <button class="option-btn" onclick="window.location.href='centros-comerciales.html'">Centros comerciales</button>
     </section>
   </main>
 
@@ -203,41 +204,41 @@
 
   <script>
     const dias = sessionStorage.getItem('days') || '3';
-    const diasSpan = document.getElementById('diasPareja');
-    const descripcion = document.getElementById('descripcionPareja');
-    const link = document.getElementById('detalleParejaLink');
+    const diasSpan = document.getElementById('diasPlan');
+    const descripcion = document.getElementById('descripcionPlan');
+    const link = document.getElementById('detallePlanLink');
 
     diasSpan.textContent = dias;
 
-    const planesRomanticos = {
+    const planesFamilia = {
       "1": {
-        descripcion: "Un día para una cita especial con atardecer en la playa.",
-        link: "pareja-plan-1-dia.html"
+        descripcion: "Un día perfecto para disfrutar en familia con actividades relajantes y divertidas.",
+        link: "plan-familia-1-dia.html"
       },
       "2": {
-        descripcion: "Dos días de aventuras y cenas románticas en Valencia.",
-        link: "pareja-plan-2-dias.html"
+        descripcion: "Dos días llenos de aventuras y momentos especiales para toda la familia.",
+        link: "plan-familia-2-dias.html"
       },
       "3": {
-        descripcion: "Un fin de semana inolvidable lleno de amor y experiencias.",
-        link: "pareja-plan-3-dias.html"
+        descripcion: "Un fin de semana completo con experiencias para grandes y chicos.",
+        link: "plan-familia-3-dias.html"
       },
       "4": {
-        descripcion: "Cuatro días explorando los rincones más románticos de la ciudad.",
-        link: "pareja-plan-4-dias.html"
+        descripcion: "Cuatro días explorando parques, museos y sitios para el disfrute familiar.",
+        link: "plan-familia-4-dias.html"
       },
       "5": {
-        descripcion: "Cinco días para reconectar, relajarse y disfrutar a pleno.",
-        link: "pareja-plan-5-dias.html"
+        descripcion: "Cinco días para una experiencia familiar inolvidable y llena de diversión.",
+        link: "plan-familia-5-dias.html"
       }
     };
 
-    if (planesRomanticos[dias]) {
-      descripcion.textContent = planesRomanticos[dias].descripcion;
-      link.href = planesRomanticos[dias].link;
+    if (planesFamilia[dias]) {
+      descripcion.textContent = planesFamilia[dias].descripcion;
+      link.href = planesFamilia[dias].link;
       link.style.display = 'inline-block';
     } else {
-      descripcion.textContent = "Explorá nuestras opciones para armar tu viaje perfecto.";
+      descripcion.textContent = "Explorá nuestras opciones para personalizar tu viaje.";
       link.style.display = 'none';
     }
   </script>
