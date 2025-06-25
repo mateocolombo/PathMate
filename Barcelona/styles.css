@@ -1,120 +1,129 @@
-/* Barcelona/styles.css - Estilo para página de grupo */
-
-html, body {
+tml, body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100vh;
+  height: auto;
   font-family: 'Segoe UI', sans-serif;
   background-image: url('../images/sagrada-familia.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: #333;
+  overflow-x: hidden;
+
+  /* Flex container para que header + main + footer ocupen todo el alto */
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  overflow-x: hidden;
 }
 
 header, footer {
   background-color: #f97316;
   color: white;
   text-align: center;
-  padding: 15px;
-  font-weight: bold;
+  padding: 10px; /* uniforme */
+  flex-shrink: 0;          /* que no se achiquen */
+  z-index: 10;
+  position: relative;
+  width: 100%;
 }
 
-footer {
-  font-weight: normal;
-  font-size: 14px;
-}
-
-main {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 30px 20px;
-}
-
-/* Sección de pregunta de días */
-.intro-box {
-  background-color: white;
-  padding: 20px 30px;
-  border-radius: 20px;
-  margin-bottom: 30px;
-  text-align: center;
-  max-width: 600px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.intro-box h2 {
+footer p {
   margin: 0;
-  font-size: 22px;
-  color: #f97316;
-}
-
-.intro-box p {
-  margin: 10px 0 0;
-  font-size: 16px;
-}
-
-/* Contenedor para opciones de grupo */
-.options-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-/* Tarjetas de opción */
-.option-card {
-  background-color: white;
-  border: 2px solid #f97316;
-  border-radius: 20px;
-  padding: 20px 30px;
+  white-space: normal;      /* ✅ permite el salto de línea */
+  overflow: visible;
+  text-overflow: unset;
   text-align: center;
-  min-width: 220px;
-  font-weight: bold;
+}
+
+/* Contenedor principal */
+main {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 60px 20px 20px 20px; /* espacio extra arriba para botón */
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  position: relative;
+  color: #333;
+  display: flex;
+  flex-direction: row; /* columnas lado a lado */
+  justify-content: space-between; /* separación entre columnas */
+  align-items: flex-start; /* alinear arriba */
+  background: transparent;
+
+  /* Que main crezca para ocupar el espacio restante */
+  flex-grow: 1;
+
+  /* Cambiado para permitir scroll natural de la página */
+  overflow-y: visible;
+}
+
+/* Títulos */
+h2 {
   color: #f97316;
-  text-decoration: none;
-  transition: background-color 0.3s, color 0.3s;
-  font-size: 18px;
+  margin-top: 0;
 }
 
-.option-card:hover {
-  background-color: #f97316;
-  color: white;
+/* Contenedor de plan */
+.plan-output {
+  margin-top: 0;
+  padding: 15px;
+  border: 2px solid #f97316;
+  background-color: transparent;
+  border-radius: 10px;
+  width: 48%; /* tamaño aproximado para dos columnas */
+  box-sizing: border-box;
 }
 
-/* Botón volver */
+/* Botón Volver */
 .btn-volver {
-  margin-top: 30px;
+  position: absolute;     /* absolute dentro de main para no romper layout */
+  top: 15px;
+  left: 15px;
   background-color: #f97316;
   color: white;
   border: none;
   border-radius: 25px;
-  padding: 12px 30px;
+  padding: 10px 25px;
   font-weight: 600;
   font-size: 16px;
+  cursor: pointer;
   text-decoration: none;
   transition: background-color 0.3s ease;
+  z-index: 9999;
 }
 
 .btn-volver:hover {
   background-color: #e86f0f;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .option-card {
-    width: 100%;
-  }
-
-  .intro-box {
-    width: 100%;
-    padding: 20px;
-  }
+/* Otros botones */
+.btn {
+  padding: 10px 25px;
+  margin: 10px 5px;
+  background-color: #f97316;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: background-color 0.3s ease;
 }
+
+.btn:hover {
+  background-color: #e86f0f;
+}
+
+/* Botones en columna */
+.link-btn {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Responsive: para pantallas chicas */
+@media (max-width: 600px) {
+  main {
+    flex-direction:
