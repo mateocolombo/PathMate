@@ -183,7 +183,7 @@
 
   <main>
     <section class="plan-left" id="planPersonalizado">
-      <h2>Tu mejor plan para <span id="diasPlan">X</span> día(s)</h2>
+      <h2>Plan familiar para <span id="diasPlan">X</span> día(s)</h2>
       <p id="descripcionPlan">Cargando plan...</p>
       <a href="#" id="detallePlanLink">Ver detalle del plan</a>
     </section>
@@ -205,12 +205,12 @@
   <script>
     const dias = sessionStorage.getItem('days') || '3';
     const diasSpan = document.getElementById('diasPlan');
-    const descripcionPlan = document.getElementById('descripcionPlan');
-    const detallePlanLink = document.getElementById('detallePlanLink');
+    const descripcion = document.getElementById('descripcionPlan');
+    const link = document.getElementById('detallePlanLink');
 
     diasSpan.textContent = dias;
 
-    const planesPorDias = {
+    const planesFamilia = {
       "1": {
         descripcion: "Un día perfecto para disfrutar en familia con actividades relajantes y divertidas.",
         link: "plan-familia-1-dia.html"
@@ -233,13 +233,13 @@
       }
     };
 
-    if (planesPorDias[dias]) {
-      descripcionPlan.textContent = planesPorDias[dias].descripcion;
-      detallePlanLink.href = planesPorDias[dias].link;
-      detallePlanLink.style.display = 'inline-block';
+    if (planesFamilia[dias]) {
+      descripcion.textContent = planesFamilia[dias].descripcion;
+      link.href = planesFamilia[dias].link;
+      link.style.display = 'inline-block';
     } else {
-      descripcionPlan.textContent = "Explorá nuestras opciones para personalizar tu viaje.";
-      detallePlanLink.style.display = 'none';
+      descripcion.textContent = "Explorá nuestras opciones para personalizar tu viaje.";
+      link.style.display = 'none';
     }
   </script>
 </body>
