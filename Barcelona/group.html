@@ -12,38 +12,40 @@
     <h1>🌍 PathMate</h1>
   </header>
 
-  <div class="question-box" id="questionBox">
-    <!-- Aquí se mostrará la pregunta con días y ciudad -->
-  </div>
-
   <main>
-    <section class="form-section">
-      <h2>Con quién vas a disfrutar este viaje</h2>
-      <button class="option-btn" onclick="redirigir('familia')">Viaje de familia</button>
-      <button class="option-btn" onclick="redirigir('amigos')">Viaje de amigos</button>
-      <button class="option-btn" onclick="redirigir('pareja')">Viaje de pareja</button>
+    <!-- Pregunta con los días -->
+    <div class="intro-box" id="questionBox">
+      <!-- El contenido se inserta dinámicamente vía JS -->
+    </div>
+
+    <!-- Opciones de grupo -->
+    <section class="options-container">
+      <a href="#" class="option-card" onclick="redirigir('familia')">Viaje de familia</a>
+      <a href="#" class="option-card" onclick="redirigir('amigos')">Viaje de amigos</a>
+      <a href="#" class="option-card" onclick="redirigir('pareja')">Viaje de pareja</a>
     </section>
+
+    <a class="btn-volver" onclick="history.back()">← Volver</a>
   </main>
 
   <footer>
-    <button class="back-btn" onclick="history.back()">← Volver</button>
     <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
   </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const days = sessionStorage.getItem('days') || 'X';
-      const city = 'Barcelona'; // Fijamos ciudad como Barcelona
+      const city = 'Barcelona';
 
-      sessionStorage.setItem('city', city); // Forzamos Barcelona en sessionStorage
-      
+      sessionStorage.setItem('city', city);
+
       const questionBox = document.getElementById('questionBox');
-      questionBox.textContent = `¿Cómo te gustaría disfrutar los ${days} día${days == 1 ? '' : 's'} en ${city}?`;
+      questionBox.innerHTML = `<h2>¿Cómo te gustaría disfrutar los ${days} día${days == 1 ? '' : 's'} en ${city}?</h2>`;
     });
 
     function redirigir(tipo) {
       const days = sessionStorage.getItem('days') || '3';
-      const city = 'Barcelona'; // Fijamos de nuevo la ciudad
+      const city = 'Barcelona';
 
       sessionStorage.setItem('days', days);
       sessionStorage.setItem('city', city);
