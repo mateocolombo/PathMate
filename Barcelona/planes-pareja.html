@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PathMate - Planes Familia</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #fff7f0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #f97316;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      font-size: 16px;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .plan-left, .options-right {
+      flex: 1;
+      min-width: 300px;
+      max-width: 600px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .plan-left h2,
+    .options-right h2 {
+      color: #f97316;
+      margin-top: 0;
+    }
+
+    .plan-left p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .plan-left a {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #f97316;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: background-color 0.3s ease;
+    }
+
+    .plan-left a:hover {
+      background-color: #d65a00;
+    }
+
+    .options-right {
+      text-align: center;
+      background-color: #fff7f0;
+    }
+
+    .option-btn {
+      background-color: #f97316;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 20px;
+      margin: 10px 0;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    .option-btn:hover {
+      background-color: #d65a00;
+    }
+
+    footer {
+      background-color: #f0e6db;
+      padding: 20px 30px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+      color: #555;
+      font-size: 14px;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+    }
+
+    footer p {
+      margin: 0;
+      flex-grow: 1;
+      text-align: left;
+    }
+
+    .back-btn {
+      background-color: #f97316;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 25px;
+      font-size: 16px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #d65a00;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+        padding: 20px 15px;
+      }
+
+      .plan-left, .options-right {
+        width: 100%;
+        max-width: none;
+        padding: 15px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 20px;
+        font-size: 13px;
+        align-items: flex-start;
+      }
+
+      .back-btn {
+        align-self: flex-start;
+        padding: 8px 20px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌍 PathMate</h1>
+    <p>Planes ideales para tu viaje en familia</p>
+  </header>
+
+  <main>
+    <section class="plan-left" id="planPersonalizado">
+      <h2>Plan familiar para <span id="diasPlan">X</span> día(s)</h2>
+      <p id="descripcionPlan">Cargando plan...</p>
+      <a href="#" id="detallePlanLink">Ver detalle del plan</a>
+    </section>
+
+    <section class="options-right">
+      <h2>¿Qué te gustaría explorar?</h2>
+      <button class="option-btn" onclick="window.location.href='mejores-playas.html'">Mejores playas</button>
+      <button class="option-btn" onclick="window.location.href='mejores-restaurantes.html'">Mejores restaurantes</button>
+      <button class="option-btn" onclick="window.location.href='museos-entretenidos.html'">Museos más entretenidos</button>
+      <button class="option-btn" onclick="window.location.href='centros-comerciales.html'">Centros comerciales</button>
+    </section>
+  </main>
+
+  <footer>
+    <button class="back-btn" onclick="history.back()">← Volver</button>
+    <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
+  </footer>
+
+  <script>
+    const dias = sessionStorage.getItem('days') || '3';
+    const diasSpan = document.getElementById('diasPlan');
+    const descripcion = document.getElementById('descripcionPlan');
+    const link = document.getElementById('detallePlanLink');
+
+    diasSpan.textContent = dias;
+
+    const planesFamilia = {
+      "1": {
+        descripcion: "Un día perfecto para disfrutar en familia con actividades relajantes y divertidas.",
+        link: "plan-familia-1-dia.html"
+      },
+      "2": {
+        descripcion: "Dos días llenos de aventuras y momentos especiales para toda la familia.",
+        link: "plan-familia-2-dias.html"
+      },
+      "3": {
+        descripcion: "Un fin de semana completo con experiencias para grandes y chicos.",
+        link: "plan-familia-3-dias.html"
+      },
+      "4": {
+        descripcion: "Cuatro días explorando parques, museos y sitios para el disfrute familiar.",
+        link: "plan-familia-4-dias.html"
+      },
+      "5": {
+        descripcion: "Cinco días para una experiencia familiar inolvidable y llena de diversión.",
+        link: "plan-familia-5-dias.html"
+      }
+    };
+
+    if (planesFamilia[dias]) {
+      descripcion.textContent = planesFamilia[dias].descripcion;
+      link.href = planesFamilia[dias].link;
+      link.style.display = 'inline-block';
+    } else {
+      descripcion.textContent = "Explorá nuestras opciones para personalizar tu viaje.";
+      link.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
