@@ -3,8 +3,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  /* height: 100%; */           /* eliminado para evitar doble scroll */
-  min-height: 100vh;           /* permite crecer con el contenido */
+  height: 100vh;            /* altura total de la pantalla */
   font-family: 'Segoe UI', sans-serif;
   background-image: url('../images/ciudad-artes-ciencias.jpg');
   background-size: cover;
@@ -12,22 +11,21 @@ html, body {
   background-repeat: no-repeat;
   color: #333;
   overflow-x: hidden;
-  /* display: flex; */          /* eliminado para layout natural */
-  /* flex-direction: column; */
+
+  /* Flex container para que header + main + footer ocupen todo el alto */
+  display: flex;
+  flex-direction: column;
 }
 
-/* Franjas naranjas superior e inferior */
 header, footer {
   background-color: #f97316;
   color: white;
   text-align: center;
   padding: 10px; /* uniforme */
-  flex-shrink: 0;
+  flex-shrink: 0;          /* que no se achiquen */
   z-index: 10;
-}
-
-footer {
-  position: static;
+  /* quitar position fixed/static para que estén en el flujo natural */
+  position: relative;
   width: 100%;
 }
 
@@ -46,7 +44,6 @@ main {
   padding: 60px 20px 20px 20px; /* espacio extra arriba para botón */
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  /* flex-grow: 1; */          /* eliminado para evitar estirar altura */
   position: relative;
   color: #333;
   display: flex;
@@ -54,6 +51,10 @@ main {
   justify-content: space-between; /* separación entre columnas */
   align-items: flex-start; /* alinear arriba */
   background: transparent;
+
+  /* Que main crezca para ocupar el espacio restante */
+  flex-grow: 1;
+  overflow-y: auto; /* scroll solo dentro de main si es necesario */
 }
 
 /* Títulos */
@@ -75,7 +76,7 @@ h2 {
 
 /* Botón Volver */
 .btn-volver {
-  position: fixed;     /* cambiado de absolute a fixed */
+  position: absolute;     /* absolute dentro de main para no romper layout */
   top: 15px;
   left: 15px;
   background-color: #f97316;
@@ -124,14 +125,6 @@ h2 {
 
 /* Responsive: para pantallas chicas */
 @media (max-width: 600px) {
-  .btn-volver {
-    position: fixed;  /* mantener fixed en móvil */
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
-  }
-
   main {
     flex-direction: column; /* apilar verticalmente en móvil */
     padding-top: 20px; /* reducir espacio si el botón está en flujo normal */
@@ -140,6 +133,11 @@ h2 {
   .plan-output {
     width: 100%; /* ancho completo en móvil */
     margin-bottom: 20px;
+  }
+
+  .btn-volver {
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
