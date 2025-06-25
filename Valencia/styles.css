@@ -1,9 +1,8 @@
-/* Valencia/styles.css - estilo específico para la página de grupo */
-
 html, body {
   margin: 0;
   padding: 0;
-  height: 100vh;            /* altura total de la pantalla */
+  min-height: 100vh;
+  height: auto;
   font-family: 'Segoe UI', sans-serif;
   background-image: url('../images/ciudad-artes-ciencias.jpg');
   background-size: cover;
@@ -24,7 +23,6 @@ header, footer {
   padding: 10px; /* uniforme */
   flex-shrink: 0;          /* que no se achiquen */
   z-index: 10;
-  /* quitar position fixed/static para que estén en el flujo natural */
   position: relative;
   width: 100%;
 }
@@ -54,7 +52,9 @@ main {
 
   /* Que main crezca para ocupar el espacio restante */
   flex-grow: 1;
-  overflow-y: auto; /* scroll solo dentro de main si es necesario */
+
+  /* Cambiado para permitir scroll natural de la página */
+  overflow-y: visible;
 }
 
 /* Títulos */
@@ -126,30 +126,4 @@ h2 {
 /* Responsive: para pantallas chicas */
 @media (max-width: 600px) {
   main {
-    flex-direction: column; /* apilar verticalmente en móvil */
-    padding-top: 20px; /* reducir espacio si el botón está en flujo normal */
-  }
-
-  .plan-output {
-    width: 100%; /* ancho completo en móvil */
-    margin-bottom: 20px;
-  }
-
-  .btn-volver {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-
-/* --- NUEVO: Scroll horizontal para tablas en móvil --- */
-
-.table-responsive {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* scroll suave en iOS */
-}
-
-@media (max-width: 600px) {
-  .table-responsive table {
-    min-width: 600px; /* ancho mínimo para activar scroll */
-  }
-}
+    flex-direction:
