@@ -5,7 +5,7 @@ html, body {
   padding: 0;
   height: 100%;
   font-family: 'Segoe UI', sans-serif;
-  background-image: url('../images/ciudad-artes-ciencias.jpg');
+  background-image: url('../images/sagrada-familia.jpg'); /* Imagen de Barcelona */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -21,7 +21,7 @@ header, footer {
   background-color: #f97316;
   color: white;
   text-align: center;
-  padding: 10px; /* uniforme */
+  padding: 10px;
   flex-shrink: 0;
   z-index: 10;
 }
@@ -33,7 +33,7 @@ footer {
 
 footer p {
   margin: 0;
-  white-space: normal;      /* ✅ permite el salto de línea */
+  white-space: normal;
   overflow: visible;
   text-overflow: unset;
   text-align: center;
@@ -43,16 +43,16 @@ footer p {
 main {
   max-width: 800px;
   margin: 20px auto;
-  padding: 60px 20px 20px 20px; /* espacio extra arriba para botón */
+  padding: 60px 20px 20px 20px;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   flex-grow: 1;
   position: relative;
   color: #333;
   display: flex;
-  flex-direction: row; /* Cambiado para mostrar columnas lado a lado */
-  justify-content: space-between; /* separación entre columnas */
-  align-items: flex-start; /* alinear arriba */
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
   background: transparent;
 }
 
@@ -69,14 +69,14 @@ h2 {
   border: 2px solid #f97316;
   background-color: transparent;
   border-radius: 10px;
-  width: 48%; /* tamaño aproximado para dos columnas */
+  width: 48%;
   box-sizing: border-box;
 }
 
 /* Botón Volver */
 .btn-volver {
   position: absolute;
-  top: 15px; /* cambiado de bottom a top para evitar que tape el footer */
+  top: 15px;
   left: 15px;
   background-color: #f97316;
   color: white;
@@ -132,25 +132,24 @@ h2 {
   }
 
   main {
-    flex-direction: column; /* apilar verticalmente en móvil */
-    padding-top: 20px; /* reducir espacio si el botón está en flujo normal */
+    flex-direction: column;
+    padding-top: 20px;
   }
 
   .plan-output {
-    width: 100%; /* ancho completo en móvil */
+    width: 100%;
     margin-bottom: 20px;
   }
 }
 
-/* --- NUEVO: Scroll horizontal para tablas en móvil --- */
-
+/* Scroll horizontal para tablas en móvil */
 .table-responsive {
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* scroll suave en iOS */
+  -webkit-overflow-scrolling: touch;
 }
 
 @media (max-width: 600px) {
   .table-responsive table {
-    min-width: 600px; /* ancho mínimo para activar scroll */
+    min-width: 600px;
   }
 }
