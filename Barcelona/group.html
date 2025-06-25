@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PathMate - Tipo de viaje en Barcelona</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>🌍 PathMate</h1>
+  </header>
+
+  <div class="question-box" id="questionBox">
+    <!-- Aquí se mostrará la pregunta con días y ciudad -->
+  </div>
+
+  <main>
+    <section class="form-section">
+      <h2>Con quién vas a disfrutar este viaje</h2>
+      <button class="option-btn" onclick="redirigir('familia')">Viaje de familia</button>
+      <button class="option-btn" onclick="redirigir('amigos')">Viaje de amigos</button>
+      <button class="option-btn" onclick="redirigir('pareja')">Viaje de pareja</button>
+    </section>
+  </main>
+
+  <footer>
+    <button class="back-btn" onclick="history.back()">← Volver</button>
+    <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const days = sessionStorage.getItem('days') || 'X';
+      const city = 'Barcelona'; // Fijamos ciudad como Barcelona
+
+      sessionStorage.setItem('city', city); // Forzamos Barcelona en sessionStorage
+      
+      const questionBox = document.getElementById('questionBox');
+      questionBox.textContent = `¿Cómo te gustaría disfrutar los ${days} día${days == 1 ? '' : 's'} en ${city}?`;
+    });
+
+    function redirigir(tipo) {
+      const days = sessionStorage.getItem('days') || '3';
+      const city = 'Barcelona'; // Fijamos de nuevo la ciudad
+
+      sessionStorage.setItem('days', days);
+      sessionStorage.setItem('city', city);
+
+      switch (tipo) {
+        case 'familia':
+          window.location.href = 'planes-barcelona-familia.html';
+          break;
+        case 'amigos':
+          window.location.href = 'planes-barcelona-amigos.html';
+          break;
+        case 'pareja':
+          window.location.href = 'planes-barcelona-pareja.html';
+          break;
+      }
+    }
+  </script>
+</body>
+</html>
