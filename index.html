@@ -36,11 +36,19 @@
         </div>
       </div>
 
+      <!-- Barra de búsqueda -->
+      <label for="citySearch">Buscá tu ciudad:</label>
+      <input type="text" id="citySearch" placeholder="Ej. Barcelona" />
+
+      <!-- Lista de ciudades -->
       <label for="citySelect">Destino:</label>
       <select id="citySelect" name="citySelect" required>
         <option value="">-- Elegí una ciudad --</option>
         <option value="Barcelona">Barcelona</option>
         <option value="Madrid">Madrid</option>
+        <option value="Malaga">Malaga</option>
+        <option value="Mallorca">Mallorca</option>
+        <option value="Menorca">Menorca</option>
         <option value="Sevilla">Sevilla</option>
         <option value="Valencia">Valencia</option>
       </select>
@@ -53,49 +61,73 @@
     <p>&copy; 2025 PathMate · Conectamos personas, destinos y experiencias</p>
   </footer>
 
-<script>
-  const nextBtn = document.getElementById('nextBtn');
+  <script>
+    // Función para filtrar ciudades mientras se escribe
+    const searchInput = document.getElementById('citySearch');
+    const citySelect = document.getElementById('citySelect');
 
-  nextBtn.addEventListener('click', () => {
-    const travelDate = document.getElementById('travelDate').value;
-    const returnDate = document.getElementById('returnDate').value;
-    const city = document.getElementById('citySelect').value;
+    searchInput.addEventListener('input', () => {
+      const filter = searchInput.value.toLowerCase();
+      const options = citySelect.options;
 
-    if (!travelDate) {
-      alert('Por favor, seleccioná una fecha de salida.');
-      return;
-    }
+      for (let i = 0; i < options.length; i++) {
+        const option = options[i];
+        const text = option.text.toLowerCase();
 
-    if (!returnDate) {
-      alert('Por favor, seleccioná una fecha de regreso.');
-      return;
-    }
+        if (i === 0) {
+          option.style.display = '';
+          continue;
+        }
 
-    if (returnDate < travelDate) {
-      alert('La fecha de regreso no puede ser anterior a la fecha de salida.');
-      return;
-    }
+        if (text.includes(filter)) {
+          option.style.display = '';
+        } else {
+          option.style.display = 'none';
+        }
+      }
+    });
 
-    if (!city) {
-      alert('Por favor, elegí una ciudad de destino.');
-      return;
-    }
+    // Validación del formulario y redirección
+    const nextBtn = document.getElementById('nextBtn');
 
-    // Calcular cantidad de días entre fechas
-    const start = new Date(travelDate);
-    const end = new Date(returnDate);
-    const timeDiff = end - start;
-    // +1 para incluir el día de salida también
-    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24)) + 1;
+    nextBtn.addEventListener('click', () => {
+      const travelDate = document.getElementById('travelDate').value;
+      const returnDate = document.getElementById('returnDate').value;
+      const city = document.getElementById('citySelect').value;
 
-    sessionStorage.setItem('travelDate', travelDate);
-    sessionStorage.setItem('returnDate', returnDate);
-    sessionStorage.setItem('city', city);
-    sessionStorage.setItem('days', days);  // guardo la cantidad de días
+      if (!travelDate) {
+        alert('Por favor, seleccioná una fecha de salida.');
+        return;
+      }
 
-    const url = `${city}/group.html`;
-    window.location.href = url;
-  });
-</script>
+      if (!returnDate) {
+        alert('Por favor, seleccioná una fecha de regreso.');
+        return;
+      }
+
+      if (returnDate < travelDate) {
+        alert('La fecha de regreso no puede ser anterior a la fecha de salida.');
+        return;
+      }
+
+      if (!city) {
+        alert('Por favor, elegí una ciudad de destino.');
+        return;
+      }
+
+      const start = new Date(travelDate);
+      const end = new Date(returnDate);
+      const timeDiff = end - start;
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24)) + 1;
+
+      sessionStorage.setItem('travelDate', travelDate);
+      sessionStorage.setItem('returnDate', returnDate);
+      sessionStorage.setItem('city', city);
+      sessionStorage.setItem('days', days);
+
+      const url = `${city}/group.html`;
+      window.location.href = url;
+    });
+  </script>
 </body>
 </html>

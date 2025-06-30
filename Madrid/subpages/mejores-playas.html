@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mejores Playas - PathMate</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      background-color: #fff7f0;
+    
+      background-image: url('../../images/ciudad-artes-ciencias.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    
+      color: #333;
+    }
+
+    header {
+      background-color: #f97316;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      font-size: 16px;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title-container {
+      display: inline-block;
+      background-color: white;
+      border: 3px solid #f97316;
+      border-radius: 15px;
+      padding: 10px 25px;
+      margin-bottom: 25px;
+      box-sizing: border-box;
+    }
+
+    h1.section-title {
+      color: #f97316;
+      text-align: center;
+      font-size: 28px;
+      margin: 0;
+    }
+
+    /* NUEVO CONTENEDOR CON SCROLL HORIZONTAL */
+    .scroll-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      max-width: 100%;
+      display: block; /* agregado para correcto comportamiento */
+    }
+
+    /* Contenedor para la tabla sin scroll individual */
+    .table-container {
+      overflow-x: visible; /* quitamos scroll aquí */
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 15px;
+      background-color: transparent;
+      min-width: 700px; /* ancho mínimo para activar scroll en pantallas pequeñas */
+    }
+
+    tbody tr {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+    }
+
+    tbody tr:not(:last-child) {
+      margin-bottom: 15px;
+    }
+
+    tbody td {
+      padding: 0 15px;
+      vertical-align: middle;
+    }
+
+    tbody td:first-child {
+      flex: 0 0 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding-left: 0;
+      padding-right: 20px;
+    }
+
+    tbody td:first-child img {
+      width: 150px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    tbody td:not(:first-child) {
+      flex: 1;
+      padding: 5px 10px;
+      font-size: 15px;
+    }
+
+    tbody td a {
+      color: #0a66c2;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    tbody td a:hover {
+      text-decoration: underline;
+    }
+
+    thead {
+      display: none;
+    }
+
+    .table-header {
+      display: flex;
+      padding: 10px 15px;
+      background-color: #f97316;
+      color: white;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 16px;
+      max-width: 100%;
+      margin-bottom: 10px;
+      min-width: 700px; /* mismo ancho mínimo que la tabla */
+      box-sizing: border-box; /* para que padding no sume al ancho */
+    }
+    .table-header div {
+      padding: 0 15px;
+    }
+    .table-header .col-img {
+      flex: 0 0 150px;
+      padding-left: 0;
+      padding-right: 20px;
+    }
+    .table-header .col-nombre {
+      flex: 1;
+    }
+    .table-header .col-ubicacion {
+      flex: 1;
+    }
+    .table-header .col-descripcion {
+      flex: 1;
+    }
+    .table-header .col-como-llegar {
+      flex: 1;
+    }
+
+    footer {
+      background-color: #f0e6db;
+      padding: 20px 30px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 30px;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+      color: #555;
+      font-size: 14px;
+    }
+
+    footer p {
+      margin: 0;
+      white-space: normal;
+      overflow: visible;
+      text-overflow: unset;
+      flex-grow: 1;
+      text-align: left;
+    }
+
+    .back-btn {
+      background-color: #f97316;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .back-btn:hover {
+      background-color: #d65a00;
+    }
+
+    @media (max-width: 768px) {
+      tbody td:first-child img {
+        width: 100px;
+        height: 70px;
+      }
+
+      tbody td:not(:first-child) {
+        font-size: 14px;
+        padding: 5px 8px;
+      }
+
+      .back-btn {
+        padding: 8px 20px;
+        font-size: 14px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 20px;
+        font-size: 13px;
+        align-items: flex-start;
+      }
+
+      footer p {
+        text-align: left;
+        white-space: normal;
+      }
+
+      .back-btn {
+        align-self: flex-start;
+      }
+
+      .table-header {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌍 PathMate</h1>
+    <p>Opciones ideales para un viaje con amigos</p>
+  </header>
+
+  <main>
+    <div class="section-title-container">
+      <h1 class="section-title">Las mejores playas cerca de ti</h1>
+    </div>
+
+    <!-- Aquí el nuevo contenedor para scroll horizontal -->
+    <div class="scroll-wrapper" role="region" aria-label="Tabla con playas y detalles">
+      <div class="table-header" role="row">
+        <div class="col-img">Nombre</div>
+        <div class="col-ubicacion">Ubicación</div>
+        <div class="col-descripcion">Descripción</div>
+        <div class="col-como-llegar">Cómo llegar</div>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <img src="images/playa-alboraya.jpg" alt="Playa Alboraya" />
+                <div>Playa Alboraya</div>
+              </td>
+              <td>Alboraya, Valencia</td>
+              <td>Un espacio tranquilo con aguas claras ideal para familias.</td>
+              <td><a href="https://www.google.com/maps/place/Platja+de+la+Patacona/@39.5000329,-0.3316659,14.33z" target="_blank" rel="noopener noreferrer">Ver mapa</a></td>
+            </tr>
+            <tr>
+              <td>
+                <img src="images/playa-malvarrosa.jpg" alt="Playa Malvarrosa" />
+                <div>Playa Malvarrosa</div>
+              </td>
+              <td>Valencia</td>
+              <td>La playa urbana más famosa de Valencia con amplio paseo marítimo.</td>
+              <td><a href="https://www.google.com/maps/place/Playa+de+la+Malvarrosa/@39.4769479,-0.3334281,15z" target="_blank" rel="noopener noreferrer">Ver mapa</a></td>
+            </tr>
+            <tr>
+              <td>
+                <img src="images/playa-pinedo.jpg" alt="Playa Pinedo" />
+                <div>Playa Pinedo</div>
+              </td>
+              <td>Pinedo, Valencia</td>
+              <td>Perfecta para quienes buscan menos aglomeración y naturaleza.</td>
+              <td><a href="https://www.google.com/maps/place/Playa+de+Pinedo/@39.421134,-0.3381289,16z" target="_blank" rel="noopener noreferrer">Ver mapa</a></td>
+            </tr>
+            <tr>
+              <td>
+                <img src="images/playa-meliana.jpg" alt="Playa de la Meliana" />
+                <div>Playa de Meliana</div>
+              </td>
+              <td>Meliana, Valencia</td>
+              <td>Un paraíso poco conocido, ideal para relajarse y desconectar.</td>
+              <td><a href="https://www.google.com/maps/place/Playa+de+Meliana/@39.5219607,-0.3210826,15.48z" target="_blank" rel="noopener noreferrer">Ver mapa</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <button class="back-btn" onclick="history.back()">← Volver</button>
+    <p>&copy; 2025 PathMate · Descubrí, conectá y viajá</p>
+  </footer>
+</body>
+</html>

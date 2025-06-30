@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PathMate - Planes Pareja</title>
+  <title>PathMate - Planes Familia</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
     * {
@@ -13,8 +13,11 @@
     html, body {
       margin: 0;
       padding: 0;
+      min-height: 100vh;
+      height: auto;
       font-family: sans-serif;
       background-color: #fff7f0;
+      overflow-x: hidden;
     }
 
     body {
@@ -34,6 +37,13 @@
       z-index: 100;
     }
 
+    /* En móvil quita sticky */
+    @media (max-width: 600px) {
+      header {
+        position: relative !important;
+      }
+    }
+
     header h1 {
       margin: 0;
       font-size: 28px;
@@ -45,13 +55,14 @@
     }
 
     main {
-      flex: 1;
+      flex: 1 0 auto;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: flex-start;
       padding: 20px;
       gap: 20px;
+      overflow-y: visible; /* cambio para que no trabe el scroll */
     }
 
     .plan-left, .options-right {
@@ -178,7 +189,7 @@
 <body>
   <header>
     <h1>🌍 PathMate</h1>
-    <p>Planes ideales para tu viaje en pareja</p>
+    <p>Planes ideales para tu viaje en familia</p>
   </header>
 
   <main>
@@ -186,6 +197,7 @@
       <h2>Escoje el mejor plan para tu estancia de <span id="diasPlan">X</span> día(s)</h2>
       <div id="planesContainer">Cargando planes...</div>
     </section>
+
 
     <section class="options-right">
       <h2>¿Qué te gustaría explorar?</h2>
@@ -212,51 +224,51 @@
       "1": [
         {
           descripcion: "Plan 1: Recorrido rápido por la Ciudad de las Artes y las Ciencias.",
-          link: "plan-pareja-1-dia-1.html"
+          link: "plan-familia-1-dia-1.html"
         },
         {
           descripcion: "Plan 2: Un día relajado en la playa de la Malvarrosa.",
-          link: "plan-pareja-1-dia-2.html"
+          link: "plan-familia-1-dia-2.html"
         }
       ],
       "2": [
         {
           descripcion: "Plan 1: Día 1 en el centro histórico, Día 2 en museos.",
-          link: "plan-pareja-2-dias-1.html"
+          link: "plan-familia-2-dias-1.html"
         },
         {
           descripcion: "Plan 2: Día 1 en la playa, Día 2 en vida nocturna.",
-          link: "plan-pareja-2-dias-2.html"
+          link: "plan-familia-2-dias-2.html"
         }
       ],
       "3": [
         {
           descripcion: "Plan 1: Fin de semana con cultura, compras y ocio.",
-          link: "plan-pareja-3-dias-1.html"
+          link: "plan-familia-3-dias-1.html"
         },
         {
           descripcion: "Plan 2: Ruta gastronómica y relax costero.",
-          link: "plan-pareja-3-dias-2.html"
+          link: "plan-familia-3-dias-2.html"
         }
       ],
       "4": [
         {
           descripcion: "Plan 1: Valencia a fondo con excursiones de día completo.",
-          link: "plan-pareja-4-dias-1.html"
+          link: "plan-familia-4-dias-1.html"
         },
         {
           descripcion: "Plan 2: Experiencias locales y visitas a pueblos cercanos.",
-          link: "plan-pareja-4-dias-2.html"
+          link: "plan-familia-4-dias-2.html"
         }
       ],
       "5": [
         {
           descripcion: "Plan 1: Exploración completa de Valencia y alrededores.",
-          link: "plan-pareja-5-dias-1.html"
+          link: "plan-familia-5-dias-1.html"
         },
         {
           descripcion: "Plan 2: Aventura, gastronomía y cultura regional.",
-          link: "plan-pareja-5-dias-2.html"
+          link: "plan-familia-5-dias-2.html"
         }
       ]
     };

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PathMate - Planes Pareja</title>
+  <title>PathMate - Planes para amigos</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
     * {
@@ -13,8 +13,11 @@
     html, body {
       margin: 0;
       padding: 0;
+      min-height: 100vh;
+      height: auto;
       font-family: sans-serif;
       background-color: #fff7f0;
+      overflow-x: hidden;
     }
 
     body {
@@ -34,6 +37,12 @@
       z-index: 100;
     }
 
+    @media (max-width: 600px) {
+      header {
+        position: relative !important;
+      }
+    }
+
     header h1 {
       margin: 0;
       font-size: 28px;
@@ -45,7 +54,7 @@
     }
 
     main {
-      flex: 1;
+      flex: 1 0 auto;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -75,18 +84,18 @@
       margin-bottom: 10px;
     }
 
-    .plan-left a {
+    .detalle-link {
       display: inline-block;
-      margin-top: 10px;
+      margin-top: 5px;
       background-color: #f97316;
       color: white;
       text-decoration: none;
-      padding: 10px 20px;
+      padding: 8px 18px;
       border-radius: 25px;
       transition: background-color 0.3s ease;
     }
 
-    .plan-left a:hover {
+    .detalle-link:hover {
       background-color: #d65a00;
     }
 
@@ -178,7 +187,7 @@
 <body>
   <header>
     <h1>🌍 PathMate</h1>
-    <p>Planes ideales para tu viaje en pareja</p>
+    <p>Opciones ideales para un viaje con amigos</p>
   </header>
 
   <main>
@@ -188,11 +197,11 @@
     </section>
 
     <section class="options-right">
-      <h2>¿Qué te gustaría explorar?</h2>
+      <h2>Elegí una opción</h2>
       <button class="option-btn" onclick="window.location.href='subpages/mejores-playas.html'">Mejores playas</button>
-      <button class="option-btn" onclick="window.location.href='subpages/mejores-restaurantes.html'">Mejores restaurantes</button>
-      <button class="option-btn" onclick="window.location.href='subpages/museos-entretenidos.html'">Museos más entretenidos</button>
+      <button class="option-btn" onclick="window.location.href='subpages/sitios-nocturnos.html'">Sitios nocturnos</button>
       <button class="option-btn" onclick="window.location.href='subpages/centros-comerciales.html'">Centros comerciales</button>
+      <button class="option-btn" onclick="window.location.href='subpages/mejores-rooftops.html'">Mejores rooftops</button>
     </section>
   </main>
 
@@ -212,51 +221,51 @@
       "1": [
         {
           descripcion: "Plan 1: Recorrido rápido por la Ciudad de las Artes y las Ciencias.",
-          link: "plan-pareja-1-dia-1.html"
+          link: "plan-amigos-1-dia-1.html"
         },
         {
           descripcion: "Plan 2: Un día relajado en la playa de la Malvarrosa.",
-          link: "plan-pareja-1-dia-2.html"
+          link: "plan-amigos-1-dia-2.html"
         }
       ],
       "2": [
         {
           descripcion: "Plan 1: Día 1 en el centro histórico, Día 2 en museos.",
-          link: "plan-pareja-2-dias-1.html"
+          link: "plan-amigos-2-dias-1.html"
         },
         {
           descripcion: "Plan 2: Día 1 en la playa, Día 2 en vida nocturna.",
-          link: "plan-pareja-2-dias-2.html"
+          link: "plan-amigos-2-dias-2.html"
         }
       ],
       "3": [
         {
           descripcion: "Plan 1: Fin de semana con cultura, compras y ocio.",
-          link: "plan-pareja-3-dias-1.html"
+          link: "plan-amigos-3-dias-1.html"
         },
         {
           descripcion: "Plan 2: Ruta gastronómica y relax costero.",
-          link: "plan-pareja-3-dias-2.html"
+          link: "plan-amigos-3-dias-2.html"
         }
       ],
       "4": [
         {
           descripcion: "Plan 1: Valencia a fondo con excursiones de día completo.",
-          link: "plan-pareja-4-dias-1.html"
+          link: "plan-amigos-4-dias-1.html"
         },
         {
           descripcion: "Plan 2: Experiencias locales y visitas a pueblos cercanos.",
-          link: "plan-pareja-4-dias-2.html"
+          link: "plan-amigos-4-dias-2.html"
         }
       ],
       "5": [
         {
           descripcion: "Plan 1: Exploración completa de Valencia y alrededores.",
-          link: "plan-pareja-5-dias-1.html"
+          link: "plan-amigos-5-dias-1.html"
         },
         {
           descripcion: "Plan 2: Aventura, gastronomía y cultura regional.",
-          link: "plan-pareja-5-dias-2.html"
+          link: "plan-amigos-5-dias-2.html"
         }
       ]
     };
